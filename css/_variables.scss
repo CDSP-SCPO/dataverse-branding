@@ -1,0 +1,21 @@
+/*------------------------------------*\
+  # COLORS
+\*------------------------------------*/
+
+$scpo: #e6142d;
+
+
+
+
+/*------------------------------------*\
+  # BOOTSTRAP VARIABLES
+\*------------------------------------*/
+
+$enable-responsive-font-sizes: true;
+$displays: none, inline, inline-block, block, flex, inline-flex;
+$primary: $scpo;
+$font-family-sans-serif: sans-serif;
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";

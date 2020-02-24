@@ -1,0 +1,14 @@
+{
+  "name": "dataverse-branding",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.4.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}

@@ -1,0 +1,21 @@
+@import "variables";
+@import "bootstrap-base";
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { flex: 1; }
+
+footer {
+    text-align: center;
+    border-top: 0.25rem solid $scpo;
+
+    p:last-child { margin-bottom: 0; }
+}
+
+a:not(.btn):hover { text-decoration: none; opacity: 0.75; }
+
+.language-chooser, .language-chooser a { color: dimgrey; }
