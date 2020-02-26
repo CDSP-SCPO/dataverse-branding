@@ -1,33 +1,65 @@
 @import "variables";
 
+html { font-family: sans-serif !important; }
+
+.btn, .btn:hover, .btn:active, .btn:focus, .btn:visited { background-image: none; box-shadow: none; }
+.dropdown-menu { box-shadow: none; }
+
+.container > .navbar-header { margin: 0 !important; }
 .navbar-default {
 	padding-top: 1rem;
     padding-bottom: 1rem;
     background: white;
 }
+.navbar-brand { margin-left: 0 !important; }
+.navbar-collapse { border-top: none !important; }
+
+#search-row-panel, div[id$='facetCategoryList'] > div > ul > li { border: none; }
 
 a { color: $scpo; }
-a:hover { color: $scpo; text-decoration: none; opacity: 0.7; }
-#dv-sidebar a, #dv-sidebar a:hover { color: #333333; }
+.ui-widget-content a { color: $scpo !important; }
+.dataverseHeaderDataverseName { color: $scpo !important; }
+a:hover { color: $scpo; text-decoration: none; opacity: 0.75; }
+#dv-sidebar a, #dv-sidebar a:hover { color: inherit; }
 
-.icon-dataset, .icon-file { color: #777777; }
 .icon-dataverse { color: $scpo; }
-.facetTypeLink span[class^=icon] { color: #777777; }
+.icon-dataset { color: black; }
+.icon-file { color: $secondary; }
+.facetTypeLink span[class^=icon] { color: $secondary; }
 
-table[id$='resultsTable'] td > div { padding: 10px; }
+.card-title-icon-block, .resultDatasetCitationBlock { margin-bottom: 15px !important; }
+table[id$='resultsTable'] td > div { padding: 25px; margin: 7px 0; }
 table[id$='resultsTable'] td > div.dataverseResult,
 table[id$='resultsTable'] td > div.datasetResult,
 table[id$='resultsTable'] td > div {
-	border: 1px solid #e7e7e7;
-	border-left-color: #999999;
-	border-left: 4px solid;
+	border: 1px solid $gray-200;
+	border-left: 7px solid;
 	border-radius: 5px;
-    box-shadow: 0px 0px 5px 1px #eeeeee;
+    box-shadow: 0px 0px 5px 1px $gray-200;
 }
 table[id$='resultsTable'] td > div.dataverseResult { border-left-color: $scpo !important; }
+table[id$='resultsTable'] td > div.datasetResult { border-left-color: black !important; }
+table[id$='resultsTable'] td > div.fileResult { border-left-color: $secondary !important; }
 table[id$='resultsTable'] .resultDatasetCitationBlock {
-	background-color: #f2f2f2;
+	background-color: $light;
 	border: none;
 }
 
-.results-sort-pagination { margin-top: 10px; }
+.pagination > li > a { color: $scpo; }
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover { 
+	background-color: $scpo;
+	border-color: $scpo;
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+	color: darken($scpo, 15%);
+}
+.results-sort-pagination { margin-bottom: 10px; }
+.results-sort-pagination.results-bottom { margin-top: 10px; }
