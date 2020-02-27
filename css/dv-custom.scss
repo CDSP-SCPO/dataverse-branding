@@ -2,6 +2,8 @@
 
 html { font-family: sans-serif !important; }
 
+#dataverse-header-block { padding-top: 77px; }
+
 .btn, .btn:hover, .btn:active, .btn:focus, .btn:visited { background-image: none; box-shadow: none; }
 .dropdown-menu { box-shadow: none; }
 
@@ -41,8 +43,10 @@ table[id$='resultsTable'] td > div.dataverseResult { border-left-color: $scpo !i
 table[id$='resultsTable'] td > div.datasetResult { border-left-color: black !important; }
 table[id$='resultsTable'] td > div.fileResult { border-left-color: $secondary !important; }
 table[id$='resultsTable'] .resultDatasetCitationBlock {
-	background-color: $light;
+	box-shadow: none;
+	background-color: $gray-200;
 	border: none;
+	padding: 10px;
 }
 
 .pagination > li > a { color: $scpo; }
