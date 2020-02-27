@@ -19,10 +19,10 @@ html { font-family: sans-serif !important; }
 #search-row-panel, div[id$='facetCategoryList'] > div > ul > li { border: none; }
 
 a { color: $scpo; }
-.ui-widget-content a { color: $scpo !important; }
+.ui-widget-content a:not(.btn) { color: $scpo !important; }
 .dataverseHeaderDataverseName { color: $scpo !important; }
 a:hover { color: $scpo; text-decoration: none; opacity: 0.75; }
-#dv-sidebar a, #dv-sidebar a:hover { color: inherit; }
+#dv-sidebar a, #dv-sidebar a:hover { color: inherit !important; }
 
 .icon-dataverse { color: $scpo; }
 .icon-dataset { color: black; }
