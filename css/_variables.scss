@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+
 /*------------------------------------*\
   # COLORS
 \*------------------------------------*/
@@ -14,7 +17,7 @@ $scpo: #e6142d;
 $enable-responsive-font-sizes: true;
 $displays: none, inline, inline-block, block, flex, inline-flex;
 $primary: $scpo;
-$font-family-sans-serif: sans-serif;
+$font-family-sans-serif: 'Open Sans', sans-serif;
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";

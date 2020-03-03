@@ -1,6 +1,6 @@
 @import "variables";
 
-html { font-family: sans-serif !important; }
+html { font-family: 'Open Sans', sans-serif !important; }
 
 #dataverse-header-block { padding-top: 77px; }
 
@@ -19,14 +19,15 @@ html { font-family: sans-serif !important; }
 #search-row-panel, div[id$='facetCategoryList'] > div > ul > li { border: none; }
 
 a { color: $scpo; }
+.ui-widget { font-family: inherit !important };
 .ui-widget-content a:not(.btn) { color: $scpo !important; }
 .dataverseHeaderDataverseName { color: $scpo !important; }
 a:hover { color: $scpo; text-decoration: none; opacity: 0.75; }
-#dv-sidebar a, #dv-sidebar a:hover { color: inherit !important; }
+#dv-sidebar a, #dv-sidebar a:hover { color: $gray-700 !important; }
 
 .icon-dataverse { color: $scpo; }
-.icon-dataset { color: black; }
-.icon-file { color: $secondary; }
+.icon-dataset { color: $secondary; }
+.icon-file, .icon-document { color: $gray-500; }
 .facetTypeLink span[class^=icon] { color: $secondary; }
 
 .card-title-icon-block, .resultDatasetCitationBlock { margin-bottom: 15px !important; }
@@ -40,8 +41,8 @@ table[id$='resultsTable'] td > div {
     box-shadow: 0px 0px 5px 1px $gray-200;
 }
 table[id$='resultsTable'] td > div.dataverseResult { border-left-color: $scpo !important; }
-table[id$='resultsTable'] td > div.datasetResult { border-left-color: black !important; }
-table[id$='resultsTable'] td > div.fileResult { border-left-color: $secondary !important; }
+table[id$='resultsTable'] td > div.datasetResult { border-left-color: $secondary !important; }
+table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !important; }
 table[id$='resultsTable'] .resultDatasetCitationBlock {
 	box-shadow: none;
 	background-color: $gray-200;
