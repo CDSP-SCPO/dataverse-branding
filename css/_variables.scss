@@ -18,6 +18,7 @@ $enable-responsive-font-sizes: true;
 $displays: none, inline, inline-block, block, flex, inline-flex;
 $primary: $scpo;
 $font-family-sans-serif: 'Open Sans', sans-serif;
+$h1-font-size: 3rem;
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
