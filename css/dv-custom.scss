@@ -18,11 +18,11 @@ html { font-family: 'Open Sans', sans-serif !important; }
 
 #search-row-panel, div[id$='facetCategoryList'] > div > ul > li { border: none; }
 
-a { color: $scpo; }
+a, .btn-link { color: $scpo; }
 .ui-widget { font-family: inherit !important };
 .ui-widget-content a:not(.btn) { color: $scpo !important; }
 .dataverseHeaderDataverseName { color: $scpo !important; }
-a:hover { color: $scpo; text-decoration: none; opacity: 0.75; }
+a:hover, .btn-link:hover, .btn-link:focus { color: $scpo; text-decoration: none; opacity: 0.75; }
 #dv-sidebar a, #dv-sidebar a:hover { color: $gray-700 !important; }
 
 .icon-dataverse { color: $scpo; }
@@ -43,12 +43,13 @@ table[id$='resultsTable'] td > div {
 table[id$='resultsTable'] td > div.dataverseResult { border-left-color: $scpo !important; }
 table[id$='resultsTable'] td > div.datasetResult { border-left-color: $secondary !important; }
 table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !important; }
-table[id$='resultsTable'] .resultDatasetCitationBlock {
+.bg-citation {
 	box-shadow: none;
 	background-color: $gray-200;
 	border: none;
-	padding: 10px;
+	padding: 10px !important;
 }
+.bg-citation > .row { padding: 10px 25px !important; }
 
 .pagination > li > a { color: $scpo; }
 .pagination > .active > a,
@@ -68,3 +69,6 @@ table[id$='resultsTable'] .resultDatasetCitationBlock {
 }
 .results-sort-pagination { margin-bottom: 10px; }
 .results-sort-pagination.results-bottom { margin-top: 10px; }
+
+div.panel-heading.text-info[data-toggle="collapse"] { color: $scpo; }
+span.glyphicon-question-sign.tooltip-icon { color: $secondary !important; }
