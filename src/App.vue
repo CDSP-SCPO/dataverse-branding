@@ -47,7 +47,7 @@
                         <hr/>
                         <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:info.cdsp@sciencespo.fr">info.cdsp@sciencespo.fr</a></address>
                         <p class="text-muted">{{ translation.learnMore }} <a :href="translation.cdspCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.cdspCollDepositGuide }}</a></p>
-                        <a href="https://data.sciencespo.fr/dataverse/CDSP" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.depositRequest }}</a>
+                        <a href="https://data.sciencespo.fr/dataverse/cdsp" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.depositRequest }}</a>
                     </article>
                 </div>
             </div>
