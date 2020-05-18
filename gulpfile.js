@@ -1,7 +1,7 @@
 const { watch, src, dest } = require('gulp');
 const sass = require('gulp-sass');
 
-const scssSrc = './css/**/*.scss';
+const scssSrc = './src/css/**/*.scss';
 const destDir = './dist/css';
 
 function compileSCSS() {

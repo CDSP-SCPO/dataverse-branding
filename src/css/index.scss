@@ -1,7 +1,7 @@
 @import "variables";
 @import "bootstrap-base";
 
-body {
+div#app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
