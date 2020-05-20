@@ -7,7 +7,7 @@
         </div>
     </header>
     <main class="container my-5">
-        <article class="text-center mb-5 py-4 position-relative d-flex flex-column justify-content-center align-items-center">
+        <article class="text-center mb-5 py-5 position-relative d-flex flex-column justify-content-center align-items-center">
             <h1 class="text-primary mb-2">data.sciencespo</h1>
             <h4 class="text-muted mb-5">{{ translation.researchDataRepo }}</h4>
             <a href="/dataverse/sciencespo" class="btn btn-primary btn-lg text-uppercase">{{ translation.exploreBtn }}</a>
