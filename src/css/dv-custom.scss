@@ -2,19 +2,46 @@
 
 body { font-family: 'Open Sans', sans-serif !important; }
 
-#dataverse-header-block { padding-top: 77px; }
+#dataverse-header-block { padding-top: 89px !important; }
 
 .btn, .btn:hover, .btn:active, .btn:focus, .btn:visited { background-image: none; box-shadow: none; }
 .dropdown-menu { box-shadow: none; }
 
-.container > .navbar-header { margin: 0 !important; }
+.container > .navbar-header {
+	margin: 0 !important;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+	flex-flow: row-reverse;
+
+	& > a { margin-right: auto; }
+}
 .navbar-default {
-	padding-top: 1rem;
-    padding-bottom: 1rem;
-    background: white;
+	padding-top: 24px !important;
+    padding-bottom: 24px !important;
+	background: white;
+	border-bottom: $card-border-width solid $card-border-color;
+	box-shadow: 0 -1px 10px 0 rgba(0,0,0,0.125) !important;
+	min-height: 89px !important;
+	display: flex;
+    justify-content: center;
+}
+.navbar-default > .container {
+	@media (min-width: 1200px) {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&:before { display: none; }
 }
 .navbar-brand { margin-left: 0 !important; }
-.navbar-collapse { border-top: none !important; }
+.navbar-collapse { border-top: none !important; margin-right: -10px; overflow: hidden; }
+// .navbar-header { display: flex; align-items: center; }
+.navbar-header img { height: 40px !important; }
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > form > a {
+	padding: 10px !important;
+}
+.navbar-toggle { margin: 0 !important; }
 
 #search-row-panel, div[id$='facetCategoryList'] > div > ul > li { border: none; }
 
@@ -22,7 +49,7 @@ a, .btn-link { color: $scpo; }
 .ui-widget { font-family: inherit !important };
 .ui-widget-content a:not(.btn) { color: $scpo !important; }
 .dataverseHeaderDataverseName { color: $scpo !important; }
-a:hover, .btn-link:hover, .btn-link:focus { color: $scpo; text-decoration: none; opacity: 0.75; }
+a:hover, a:focus, .btn-link:hover, .btn-link:focus { color: $scpo; text-decoration: none; opacity: 0.75; }
 #dv-sidebar a, #dv-sidebar a:hover { color: $gray-700 !important; }
 
 .icon-dataverse { color: $scpo; }
@@ -72,3 +99,9 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 
 div.panel-heading.text-info[data-toggle="collapse"] { color: $scpo; }
 span.glyphicon-question-sign.tooltip-icon { color: $secondary !important; }
+
+@media (min-width: 1200px) {
+	.container {
+		width: 1140px;
+	}
+}
