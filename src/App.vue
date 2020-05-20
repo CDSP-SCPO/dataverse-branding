@@ -20,30 +20,30 @@
             <div class="row">
                 <div class="col-lg mb-5 mb-lg-0 mr-lg-2 mr-0">
                     <article class="p-4 card d-flex flex-column h-100">
-                        <h4 class="text-primary font-weight-bold text-center mb-4">{{ translation.scpoCollTitle }}</h4>
+                        <h4 class="text-primary font-weight-bold text-center mb-4" v-html="translation.scpoCollTitle"></h4>
                         <p v-html="translation.scpoCollPresentation"></p>
                         <hr class="mt-auto"/>
                         <ul class="mb-0">
-                            <li v-html="translation.depositType + ' ' + translation.scpoCollDepositType"></li>
-                            <li v-html="translation.depositRequirements + ' ' + translation.scpoCollDepositRequirements"></li>
-                            <li v-html="translation.depositDelay + ' ' + translation.scpoCollDepositDelay">}</li>
+                            <li class="mb-1" v-html="translation.depositType + ' ' + translation.scpoCollDepositType"></li>
+                            <li class="mb-1" v-html="translation.depositRequirements + ' ' + translation.scpoCollDepositRequirements"></li>
+                            <li class="mb-1" v-html="translation.depositDelay + ' ' + translation.scpoCollDepositDelay">}</li>
                             <li v-html="translation.dataAccessDelay + ' ' + translation.scpoCollDataAccessDelay"></li>
                         </ul>
                         <hr/>
-                        <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:databib@sciencespo.fr">databib@sciencespo.fr</a></address>
+                        <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:data.bib@sciencespo.fr">data.bib@sciencespo.fr</a></address>
                         <p class="text-muted">{{ translation.learnMore }} <a :href="translation.scpoCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.scpoCollDepositGuide }}</a></p>
                         <a href="/dataverse/adscpo" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.deposit }}</a>
                     </article>
                 </div>
                 <div class="col-lg">
                     <article class="p-4 card d-flex flex-column h-100">
-                        <h4 class="text-primary font-weight-bold text-center mb-4">{{ translation.cdspCollTitle }}</h4>
+                        <h4 class="text-primary font-weight-bold text-center mb-4" v-html="translation.cdspCollTitle"></h4>
                         <p v-html="translation.cdspCollPresentation"></p>
                         <hr class="mt-auto"/>
                         <ul class="mb-0">
-                            <li v-html="translation.depositType + ' ' + translation.cdspCollDepositType"></li>
-                            <li v-html="translation.depositRequirements + ' ' + translation.cdspCollDepositRequirements"></li>
-                            <li v-html="translation.depositDelay + ' ' + translation.cdspCollDepositDelay"></li>
+                            <li class="mb-1" v-html="translation.depositType + ' ' + translation.cdspCollDepositType"></li>
+                            <li class="mb-1" v-html="translation.depositRequirements + ' ' + translation.cdspCollDepositRequirements"></li>
+                            <li class="mb-1" v-html="translation.depositDelay + ' ' + translation.cdspCollDepositDelay"></li>
                             <li v-html="translation.dataAccessDelay + ' ' + translation.cdspCollDataAccessDelay"></li>
                         </ul>
                         <hr/>
@@ -55,13 +55,14 @@
             </div>
         </article>
     </main>
-    <footer class="bg-light mt-5 py-4 text-muted">
-        <div class="container">
-            <a :href="translation.scpoLink"><component :is="logo" style="height:1em" class="img-muted"></component></a>
-            <div class="mt-2 d-flex justify-content-between">
-                <p class="mb-0">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
-                <p class="mb-0 text-right">© 2020 Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></p>
+    <footer class="bg-light mt-5 py-5 text-muted">
+        <div class="container d-flex justify-content-between">
+            <div>
+              <p class="mb-2"><a :href="translation.scpoLink" class="d-flex align-items-center" style="height:1.5em;"><component :is="logo" style="height:1em" class="img-muted"></component></a></p>
+              <p class="mb-2">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
+              <p class="mb-0"><small>© 2020 Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
             </div>
+            <p class="mb-0 mt-auto"><a href="https://dataverse.org" class="text-muted">Powered by <component :is="dvlogofull" style="height:2.5em" class="img-muted"></component></a></p>
         </div>
     </footer>
   </div>
@@ -71,14 +72,15 @@
 import '../dist/css/index.css';
 import logo from './assets/logo.svg';
 import dvlogo from './assets/dv-logo-red.svg';
+import dvlogofull from './assets/dv-logo.svg';
 
 const translation = {
   'en': {
-    'title': "Home - data.sciencespo",
+    'title': "data.sciencespo",
     'researchDataRepo': "Research data repository of Sciences Po",
     'exploreBtn': "Find and explore data",
     'presentation': "Launched in February 2020, data.sciencespo is a repository that offers visibility, sharing and preservation of data collected, curated and processed at Sciences Po. The repository is based on the Dataverse open-source software and organised into collections. It is indexed by re3data.",
-    'scpoCollTitle': "Sciences Po collection (self-deposit)",
+    'scpoCollTitle': "Sciences Po collection <span class='text-muted'>(self-deposit)</span>",
     'scpoCollPresentation': "This collection, which is managed by the Direction des ressources et de l'information scientifique (DRIS), is intended to host data produced by researchers affiliated with Sciences Po, following the self-deposit process assisted by the DRIS staff. This collection is expected to be harvested by ISIDORE, BASE, OpenAIRE.",
     'scpoCollDepositType': "self-deposit assisted by the DRIS staff",
     'scpoCollDepositRequirements': "being affiliated with Sciences Po",
@@ -106,11 +108,11 @@ const translation = {
     'tou': "General terms of use",
   },
   'fr': {
-    'title': "Accueil - data.sciencespo",
+    'title': "data.sciencespo",
     'researchDataRepo': "Entrepôt de données de la recherche de Sciences Po",
     'exploreBtn': "Explorer l’entrepôt",
     'presentation': "Lancé en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre Dataverse et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data.",
-    'scpoCollTitle': "Collection Sciences Po (auto-dépôt)",
+    'scpoCollTitle': "Collection Sciences Po <span class='text-muted'>(auto-dépôt)</a>",
     'scpoCollPresentation': "Cette collection, administrée par la Direction des ressources et de l’information scientifique (DRIS), a vocation à accueillir exclusivement les données produites par les chercheurs affiliés à Sciences Po (données d’enquête, bases de données, etc.), sur le principe d’auto-dépôt accompagné par les services de la DRIS. Cette collection a vocation à être moissonnée par les portails et moteurs de recherche académiques ISIDORE, BASE, OpenAIRE.",
     'scpoCollDepositType': "auto-dépôt avec accompagnement des personnels de la DRIS",
     'scpoCollDepositRequirements': "être affilié à Sciences Po",
@@ -151,6 +153,7 @@ export default {
       'language': this.language,
       'logo': logo,
       'dvlogo': dvlogo,
+      'dvlogofull': dvlogofull,
     };
   },
   computed: {
