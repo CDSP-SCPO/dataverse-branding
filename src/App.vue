@@ -31,6 +31,7 @@
                         </ul>
                         <hr/>
                         <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:data.bib@sciencespo.fr">data.bib@sciencespo.fr</a></address>
+                        <p class="text-muted mb-1">{{ translation.guides }} <a href="/misc/guides/Guide_DEPOSIT_DSCPO_20200312.pdf">{{ translation.guidesDeposit }}</a> / <a href="/misc/guides/Guide_DOWNLOAD_DSCPO_20200312.pdf">{{ translation.guidesFind }}</a></p>
                         <p class="text-muted">{{ translation.learnMore }} <a :href="translation.scpoCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.scpoCollDepositGuide }}</a></p>
                         <a href="/dataverse/adscpo" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.deposit }}</a>
                     </article>
@@ -48,7 +49,8 @@
                         </ul>
                         <hr/>
                         <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:info.cdsp@sciencespo.fr">info.cdsp@sciencespo.fr</a></address>
-                        <p class="text-muted">{{ translation.learnMore }} <a :href="translation.cdspCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.cdspCollDepositGuide }}</a></p>
+                        <p class="text-muted mb-1">{{ translation.learnMore }} <a :href="translation.cdspCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.cdspCollDepositGuide }}</a></p>
+                        <p class="text-muted" style="visibility:hidden">{{ translation.guides }} TBD</p>
                         <a href="https://cdsp.sciences-po.fr/fr/proposer-des-donnees" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.depositRequest }}</a>
                     </article>
                 </div>
@@ -62,7 +64,7 @@
               <p class="mb-2">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
               <p class="mb-0"><small>© 2020 Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
             </div>
-            <p class="mb-0 mt-auto"><a href="https://dataverse.org" class="text-muted">Powered by <component :is="dvlogofull" style="height:2.5em" class="img-muted"></component></a></p>
+            <p class="mb-0 mt-auto"><a href="https://dataverse.org" target="_blank" rel="noopener" class="text-muted">Powered by <component :is="dvlogofull" style="height:2.5em" class="img-muted"></component></a></p>
         </div>
     </footer>
   </div>
@@ -79,7 +81,7 @@ const translation = {
     'title': "data.sciencespo",
     'researchDataRepo': "Research data repository of Sciences Po",
     'exploreBtn': "Find and explore data",
-    'presentation': "Launched in February 2020, data.sciencespo is a repository that offers visibility, sharing and preservation of data collected, curated and processed at Sciences Po. The repository is based on the Dataverse open-source software and organised into collections. It is indexed by re3data.",
+    'presentation': "Launched in February 2020, data.sciencespo is a repository that offers visibility, sharing and preservation of data collected, curated and processed at Sciences Po. The repository is based on the <a href='https://dataverse.org' target='_blank' rel='noopener'>Dataverse</a> open-source software and organised into collections. It is indexed by re3data.",
     'scpoCollTitle': "Sciences Po collection <span class='text-muted'>(self-deposit)</span>",
     'scpoCollPresentation': "This collection, which is managed by the Direction des ressources et de l'information scientifique (DRIS), is intended to host data produced by researchers affiliated with Sciences Po, following the self-deposit process assisted by the DRIS staff. This collection is expected to be harvested by ISIDORE, BASE, OpenAIRE.",
     'scpoCollDepositType': "self-deposit assisted by the DRIS staff",
@@ -103,6 +105,9 @@ const translation = {
     'deposit': "Deposit",
     'depositRequest': "Make a deposit request",
     'contact': "Contact:",
+    'guides': "Guides:",
+    'guidesDeposit': "deposit data",
+    'guidesFind': "find data",
     'learnMore': "To find out more:",
     'scpoLink': "https://www.sciencespo.fr/en",
     'tou': "General terms of use",
@@ -111,7 +116,7 @@ const translation = {
     'title': "data.sciencespo",
     'researchDataRepo': "Entrepôt de données de la recherche de Sciences Po",
     'exploreBtn': "Explorer l’entrepôt",
-    'presentation': "Lancé en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre Dataverse et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data.",
+    'presentation': "Lancé en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre <a href='https://dataverse.org' target='_blank' rel='noopener'>Dataverse</a> et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data.",
     'scpoCollTitle': "Collection Sciences Po <span class='text-muted'>(auto-dépôt)</a>",
     'scpoCollPresentation': "Cette collection, administrée par la Direction des ressources et de l’information scientifique (DRIS), a vocation à accueillir exclusivement les données produites par les chercheurs affiliés à Sciences Po (données d’enquête, bases de données, etc.), sur le principe d’auto-dépôt accompagné par les services de la DRIS. Cette collection a vocation à être moissonnée par les portails et moteurs de recherche académiques ISIDORE, BASE, OpenAIRE.",
     'scpoCollDepositType': "auto-dépôt avec accompagnement des personnels de la DRIS",
@@ -122,7 +127,7 @@ const translation = {
     'scpoCollDepositGuideLink': "https://sciencespo.libguides.com/donnees-de-la-recherche",
     'cdspCollTitle': "Collection CDSP",
     'cdspCollPresentation': "Cette collection administrée par le Centre des données socio-politiques (CDSP) comprend le <a href='/dataverse/cdsp'>catalogue d’enquêtes en sciences humaines et sociales traitées et contextualisées par les ingénieurs du CDSP</a> depuis 2005. Ce catalogue rassemble des enquêtes produites à Sciences Po ou dans d'autres institutions françaises et internationales. Il est moissonné par le portail français en SHS, Quetelet-PROGEDO Diffusion et par le <a href='https://datacatalogue.cessda.eu'>portail européen CESSDA</a>.",
-    'cdspCollDepositType': "réalisé auprès du CDSPP",
+    'cdspCollDepositType': "réalisé auprès du CDSP",
     'cdspCollDepositRequirements': "demande de dépôt et acceptation par le CDSP",
     'cdspCollDepositDelay': "plusieurs mois",
     'cdspCollDataAccessDelay': "rapide",
@@ -135,6 +140,9 @@ const translation = {
     'deposit': "Déposer des données",
     'depositRequest': "Faire une demande de dépôt",
     'contact': "Contact :",
+    'guides': "Guides :",
+    'guidesDeposit': "déposer des données",
+    'guidesFind': "trouver des données",
     'learnMore': "Pour en savoir plus :",
     'scpoLink': "https://www.sciencespo.fr/fr",
     'tou': "Conditions générales d'utilisation",
