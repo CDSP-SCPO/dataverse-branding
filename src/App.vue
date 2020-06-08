@@ -58,13 +58,13 @@
         </article>
     </main>
     <footer class="bg-light mt-5 py-5 text-muted">
-        <div class="container d-flex justify-content-between">
+        <div class="container d-sm-flex justify-content-between">
             <div>
-              <p class="mb-2"><a :href="translation.scpoLink" class="d-flex align-items-center" style="height:1.5em;"><component :is="logo" style="height:1em" class="img-muted"></component></a></p>
+              <p class="mb-2"><a :href="translation.scpoLink" class="d-inline-flex align-items-center" style="height:1.5em;"><component :is="logo" style="height:1em" class="img-muted"></component></a></p>
               <p class="mb-2">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
               <p class="mb-0"><small>© 2020 Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
             </div>
-            <p class="mb-0 mt-auto"><a href="https://dataverse.org" target="_blank" rel="noopener" class="text-muted">Powered by <component :is="dvlogofull" style="height:2.5em" class="img-muted"></component></a></p>
+            <p class="mb-0 mt-4 mt-sm-auto"><a href="https://dataverse.org" target="_blank" rel="noopener" class="text-muted">Powered by <component :is="dvlogofull" style="height:2.5em" class="img-muted"></component></a></p>
         </div>
     </footer>
   </div>
