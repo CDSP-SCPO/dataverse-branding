@@ -105,7 +105,7 @@ const translation = {
     'deposit': "Deposit",
     'depositRequest': "Make a deposit request",
     'contact': "Contact:",
-    'guides': "Guides:",
+    'guides': "Guidebooks:",
     'guidesDeposit': "deposit data",
     'guidesFind': "find data",
     'learnMore': "To find out more:",
