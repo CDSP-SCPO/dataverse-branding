@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "rm -rf ./dist; gulp build; vue-cli-service build --no-clean",
-    "watch": "gulp watch",
+    "build": "rm -rf ./dist; sass src/css:dist/css --style=compressed --load-path=src/css --load-path=node_modules; vue-cli-service build --no-clean",
+    "watch": "sass src/css:dist/css --watch --load-path=src/css --load-path=node_modules",
+    "watch:dv": "sass src/css/dv-custom.scss:dist/css/dv-custom.css --watch --load-path=src/css --load-path=node_modules",
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint"
   },
@@ -20,8 +21,7 @@
     "bootstrap": "^4.4.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
+    "sass": "^1.38.2",
     "html-webpack-inline-source-plugin": "1.0.0-beta.2",
     "html-webpack-plugin": "^4.3.0",
     "vue-svg-loader": "^0.16.0",

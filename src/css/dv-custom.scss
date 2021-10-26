@@ -2,59 +2,49 @@
 
 body { font-family: 'Open Sans', sans-serif !important; }
 
+// HEADER
 #dataverse-header-block { padding-top: 89px !important; }
-
-.btn, .btn:hover, .btn:active, .btn:focus, .btn:visited { background-image: none; box-shadow: none; }
-.btn-primary { background-color: $primary !important; border-color: darken($primary, 15%) !important; }
-.dropdown-menu { box-shadow: none; }
-
 .container > .navbar-header {
 	margin: 0 !important;
 	display: flex;
-    align-items: center;
-    justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
 	flex-flow: row-reverse;
-
 	& > a { margin-right: auto; }
 }
 .navbar-default {
 	padding-top: 24px !important;
-    padding-bottom: 24px !important;
+	padding-bottom: 24px !important;
 	background: white;
 	border-bottom: $card-border-width solid $card-border-color;
 	box-shadow: 0 -1px 10px 0 rgba(0,0,0,0.125) !important;
 	min-height: 89px !important;
 	display: flex;
-    justify-content: center;
-}
-.navbar-default > .container {
-	@media (min-width: 1200px) {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-	&:before { display: none; }
+	justify-content: center;
+
+	@media (max-width: 767px) { .container { width: 100%; } }
 }
 .navbar-brand { margin-left: 0 !important; }
-.navbar-collapse { border-top: none !important; margin-right: -10px; overflow: hidden; }
-// .navbar-header { display: flex; align-items: center; }
+.navbar-collapse { border-top: none !important; }
 .navbar-header img { height: 40px !important; }
-.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > form > a {
-	padding: 10px !important;
-}
 .navbar-toggle { margin: 0 0 0 1.5em !important; align-self: stretch; }
+
+.btn, .btn:hover, .btn:active, .btn:focus, .btn:visited { background-image: none; box-shadow: none; }
+.btn-primary { background-color: $primary !important; border-color: darken($primary, 15%) !important; }
+.dropdown-menu { box-shadow: none; }
 
 #search-row-panel, div[id$='facetCategoryList'] > div > ul > li { border: none; }
 
-a, .btn-link { color: $primary; }
+a, .btn-link, .text-primary { color: $primary; }
 .ui-widget { font-family: inherit !important };
-.ui-widget-content a:not(.btn) { color: $primary !important; }
+.ui-widget-content a:not(.btn-default) { color: $primary !important; }
 .dataverseHeaderDataverseName { color: $primary !important; }
 a:hover, a:focus, .btn-link:hover, .btn-link:focus { color: $primary; text-decoration: none; opacity: 0.75; }
 #dv-sidebar a, #dv-sidebar a:hover { color: $gray-700 !important; }
 
 .icon-dataverse { color: $primary; }
-.icon-dataset { color: $secondary; }
+.icon-dataset,
+div.citation-block div.preview-icon-block span[class^='icon'] { color: $secondary; }
 .icon-file, .icon-document { color: $gray-500; }
 .facetTypeLink span[class^=icon] { color: $secondary; }
 
@@ -65,7 +55,7 @@ table[id$='resultsTable'] td > div.datasetResult,
 table[id$='resultsTable'] td > div {
 	border: 1px solid $gray-200;
 	border-left: 7px solid;
-	border-radius: 5px;
+	border-radius: $border-radius;
     box-shadow: 0px 0px 5px 1px $gray-200;
 }
 table[id$='resultsTable'] td > div.dataverseResult { border-left-color: $primary !important; }
@@ -76,8 +66,8 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 	background-color: $gray-200;
 	border: none;
 	padding: 10px !important;
+	border-radius: $border-radius;
 }
-.bg-citation > .row { padding: 0 15px !important; }
 
 .pagination > li > a { color: $primary; }
 .pagination > .active > a,
@@ -85,9 +75,10 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 .pagination > .active > a:hover,
 .pagination > .active > span,
 .pagination > .active > span:focus,
-.pagination > .active > span:hover { 
+.pagination > .active > span:hover {
 	background-color: $primary;
 	border-color: $primary;
+	color: white !important;
 }
 .pagination > li > a:focus,
 .pagination > li > a:hover,
@@ -99,10 +90,18 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 .results-sort-pagination.results-bottom { margin-top: 10px; }
 
 div.panel-heading.text-info[data-toggle="collapse"] { color: $primary; }
-span.glyphicon-question-sign.tooltip-icon { color: $secondary !important; }
+div.citation-block div.preview-icon-block { padding-bottom: 0 !important; min-height: unset !important; }
+span.glyphicon-question-sign.tooltip-icon.tooltip-icon { color: $secondary !important; }
+#ajaxStatusPanel img { filter: hue-rotate(150deg); }
 
 @media (min-width: 1200px) {
 	.container {
 		width: 1140px;
+	}
+}
+
+@media (min-width: 768px) {
+	.navbar-nav a {
+		padding: 10px !important;
 	}
 }
