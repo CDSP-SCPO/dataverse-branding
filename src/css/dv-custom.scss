@@ -70,7 +70,7 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 	background-color: $gray-200;
 	border: none;
 	padding: 10px !important;
-	border-radius: $border-radius;
+	border-radius: $border-radius !important;
 }
 
 .pagination > li > a, .ui-paginator-pages > a { color: $primary; }
