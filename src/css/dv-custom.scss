@@ -28,6 +28,7 @@ body { font-family: 'Open Sans', sans-serif !important; }
 .navbar-collapse { border-top: none !important; }
 .navbar-header img { height: 40px !important; }
 .navbar-toggle { margin: 0 0 0 1.5em !important; align-self: stretch; }
+.navbar-default .navbar-nav a { color: #696969; }
 
 .btn, .btn:hover, .btn:active, .btn:focus, .btn:visited { background-image: none; box-shadow: none; }
 .btn-primary { background-color: $primary !important; border-color: darken($primary, 15%) !important; }
@@ -35,9 +36,12 @@ body { font-family: 'Open Sans', sans-serif !important; }
 
 #search-row-panel, div[id$='facetCategoryList'] > div > ul > li { border: none; }
 
-a, .btn-link, .text-primary { color: $primary; }
+a:not(.btn-default), .btn-link, .text-primary { color: $primary; }
 .ui-widget { font-family: inherit !important };
-.ui-widget-content a:not(.btn-default) { color: $primary !important; }
+.ui-widget-content a { color: $primary; }
+.ui-widget-content a:hover, .ui-widget-content a:focus { color: $primary; opacity: 0.75; }
+.ui-tabs .ui-tabs-nav.ui-widget-header li a { color: $primary; }
+.dropdown-menu > li > a { color: #333; }
 .dataverseHeaderDataverseName { color: $primary !important; }
 a:hover, a:focus, .btn-link:hover, .btn-link:focus { color: $primary; text-decoration: none; opacity: 0.75; }
 #dv-sidebar a, #dv-sidebar a:hover { color: $gray-700 !important; }
@@ -69,13 +73,16 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 	border-radius: $border-radius;
 }
 
-.pagination > li > a { color: $primary; }
+.pagination > li > a, .ui-paginator-pages > a { color: $primary; }
 .pagination > .active > a,
 .pagination > .active > a:focus,
 .pagination > .active > a:hover,
 .pagination > .active > span,
 .pagination > .active > span:focus,
-.pagination > .active > span:hover {
+.pagination > .active > span:hover,
+.ui-paginator-pages > a.ui-state-active,
+.ui-paginator-pages > a.ui-state-active:focus,
+.ui-paginator-pages > a.ui-state-active:hover {
 	background-color: $primary;
 	border-color: $primary;
 	color: white !important;
@@ -90,6 +97,7 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 .results-sort-pagination.results-bottom { margin-top: 10px; }
 
 div.panel-heading.text-info[data-toggle="collapse"] { color: $primary; }
+.panel-default>.panel-heading { background-image: unset !important; }
 div.citation-block div.preview-icon-block { padding-bottom: 0 !important; min-height: unset !important; }
 span.glyphicon-question-sign.tooltip-icon.tooltip-icon { color: $secondary !important; }
 #ajaxStatusPanel img { filter: hue-rotate(150deg); }
