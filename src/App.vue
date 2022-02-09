@@ -1,82 +1,12 @@
-<template>
-  <div id="app">
-    <header>
-        <div class="container d-sm-flex justify-content-between align-items-center py-4 flex-wrap">
-            <a href="/"><component :is="logo" style="height:2.5em"></component></a>
-            <div class="language-chooser mt-4 mt-sm-0"><a href="#" @click.prevent="toggleLanguage" class="text-uppercase">{{ otherLanguage }}</a></div>
-        </div>
-    </header>
-    <main class="container my-5">
-        <article class="text-center mb-5 py-5 position-relative d-flex flex-column justify-content-center align-items-center">
-            <h1 class="text-primary mb-2">data.sciencespo</h1>
-            <h4 class="text-muted mb-5">{{ translation.researchDataRepo }}</h4>
-            <a href="/dataverse/sciencespo" class="btn btn-primary btn-lg text-uppercase">{{ translation.exploreBtn }}</a>
-            <component :is="dvlogo" class="background-logo"></component>
-        </article>
-        <article>
-            <article class="mb-5">
-                <p v-html="translation.presentation"></p>
-            </article>
-            <div class="row">
-                <div class="col-lg mb-5 mb-lg-0 mr-lg-2 mr-0">
-                    <article class="p-4 card d-flex flex-column h-100">
-                        <h4 class="text-primary font-weight-bold text-center mb-4" v-html="translation.scpoCollTitle"></h4>
-                        <p v-html="translation.scpoCollPresentation"></p>
-                        <hr class="mt-auto"/>
-                        <ul class="mb-0">
-                            <li class="mb-1" v-html="translation.depositType + ' ' + translation.scpoCollDepositType"></li>
-                            <li class="mb-1" v-html="translation.depositRequirements + ' ' + translation.scpoCollDepositRequirements"></li>
-                            <li class="mb-1" v-html="translation.depositDelay + ' ' + translation.scpoCollDepositDelay">}</li>
-                            <li v-html="translation.dataAccessDelay + ' ' + translation.scpoCollDataAccessDelay"></li>
-                        </ul>
-                        <hr/>
-                        <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:data.bib@sciencespo.fr">data.bib@sciencespo.fr</a></address>
-                        <p class="text-muted mb-1">{{ translation.guides }} <a href="/misc/guides/Guide_DEPOSIT_DSCPO_20200312.pdf">{{ translation.guidesDeposit }}</a> / <a href="/misc/guides/Guide_DOWNLOAD_DSCPO_20200312.pdf">{{ translation.guidesFind }}</a></p>
-                        <p class="text-muted">{{ translation.learnMore }} <a :href="translation.scpoCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.scpoCollDepositGuide }}</a></p>
-                        <a href="/dataverse/adscpo" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.deposit }}</a>
-                    </article>
-                </div>
-                <div class="col-lg">
-                    <article class="p-4 card d-flex flex-column h-100">
-                        <h4 class="text-primary font-weight-bold text-center mb-4" v-html="translation.cdspCollTitle"></h4>
-                        <p v-html="translation.cdspCollPresentation"></p>
-                        <hr class="mt-auto"/>
-                        <ul class="mb-0">
-                            <li class="mb-1" v-html="translation.depositType + ' ' + translation.cdspCollDepositType"></li>
-                            <li class="mb-1" v-html="translation.depositRequirements + ' ' + translation.cdspCollDepositRequirements"></li>
-                            <li class="mb-1" v-html="translation.depositDelay + ' ' + translation.cdspCollDepositDelay"></li>
-                            <li v-html="translation.dataAccessDelay + ' ' + translation.cdspCollDataAccessDelay"></li>
-                        </ul>
-                        <hr/>
-                        <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:info.cdsp@sciencespo.fr">info.cdsp@sciencespo.fr</a></address>
-                        <p class="text-muted mb-1">{{ translation.learnMore }} <a :href="translation.cdspCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.cdspCollDepositGuide }}</a></p>
-                        <p class="text-muted" style="visibility:hidden">{{ translation.guides }} TBD</p>
-                        <a href="https://cdsp.sciences-po.fr/fr/proposer-des-donnees" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.depositRequest }}</a>
-                    </article>
-                </div>
-            </div>
-        </article>
-    </main>
-    <footer class="bg-light mt-5 py-5 text-muted">
-        <div class="container d-sm-flex justify-content-between">
-            <div>
-              <p class="mb-2"><a :href="translation.scpoLink" class="d-inline-flex align-items-center" style="height:1.5em;"><component :is="logo" style="height:1em" class="img-muted"></component></a></p>
-              <p class="mb-2">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
-              <p class="mb-0"><small>© 2020 Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
-            </div>
-            <p class="mb-0 mt-4 mt-sm-auto"><a href="https://dataverse.org" target="_blank" rel="noopener" class="text-muted">Powered by <component :is="dvlogofull" style="height:2.5em" class="img-muted"></component></a></p>
-        </div>
-    </footer>
-  </div>
-</template>
+<script setup>
 
-<script>
+import { computed, ref} from 'vue'
 import '../dist/css/index.css';
-import logo from './assets/logo.svg';
-import dvlogo from './assets/dv-logo-red.svg';
-import dvlogofull from './assets/dv-logo.svg';
+import Logo from './assets/logo.svg?component';
+import DVLogo from './assets/dv-logo-red.svg?component';
+import DVLogofull from './assets/dv-logo.svg?component';
 
-const translation = {
+const translations = {
   'en': {
     'title': "data.sciencespo",
     'researchDataRepo': "Research data repository of Sciences Po",
@@ -149,38 +79,95 @@ const translation = {
   },
 }
 
-export default {
-  name: 'App',
-  created() {
-    const browserLanguage = window.navigator.userLanguage || window.navigator.language;
-    this.language = browserLanguage == 'fr' ? browserLanguage : 'en';
-    this.changeLanguage(this.language);
-  },
-  data() {
-    return {
-      'language': this.language,
-      'logo': logo,
-      'dvlogo': dvlogo,
-      'dvlogofull': dvlogofull,
-    };
-  },
-  computed: {
-    translation() {
-      return translation[this.language];
-    },
-    otherLanguage() {
-      return this.language === 'en' ? 'fr' : 'en';
-    }
-  },
-  methods: {
-    changeLanguage(lang) {
-      this.language = lang;
-      document.documentElement.setAttribute('lang', this.language);
-      document.title = this.translation.title;
-    },
-    toggleLanguage() {
-      this.changeLanguage(this.otherLanguage);
-    },
-  },
+const browserLanguage = window.navigator.language || window.navigator.language;
+const language = ref(browserLanguage.includes('fr') ? 'fr' : 'en');
+
+const translation = computed(() => {
+  return translations[language.value];
+});
+const otherLanguage = computed(() => {
+  return language.value === 'en' ? 'fr' : 'en';
+});
+
+function changeLanguage(newLang) {
+  language.value = newLang;
+  document.documentElement.setAttribute('lang', language.value);
+  document.title = translation.value.title;
 }
+function toggleLanguage() {
+  changeLanguage(otherLanguage.value);
+}
+
+// set start dom state
+changeLanguage(language.value);
 </script>
+
+<template>
+  <header>
+      <div class="container d-sm-flex justify-content-between align-items-center py-4 flex-wrap">
+          <a href="/"><Logo style="height:2.5em"/></a>
+          <div class="language-chooser mt-4 mt-sm-0"><a href="#" @click.prevent="toggleLanguage" class="text-uppercase">{{ otherLanguage }}</a></div>
+      </div>
+  </header>
+  <main class="container my-5">
+      <article class="text-center mb-5 py-5 position-relative d-flex flex-column justify-content-center align-items-center">
+          <h1 class="text-primary mb-2">data.sciencespo</h1>
+          <h4 class="text-muted mb-5">{{ translation.researchDataRepo }}</h4>
+          <a href="/dataverse/sciencespo" class="btn btn-primary btn-lg text-uppercase">{{ translation.exploreBtn }}</a>
+          <DVLogo class="background-logo"/>
+      </article>
+      <article>
+          <article class="mb-5">
+              <p v-html="translation.presentation"></p>
+          </article>
+          <div class="row">
+              <div class="col-lg mb-5 mb-lg-0 mr-lg-2 mr-0">
+                  <article class="p-4 card d-flex flex-column h-100">
+                      <h4 class="text-primary font-weight-bold text-center mb-4" v-html="translation.scpoCollTitle"></h4>
+                      <p v-html="translation.scpoCollPresentation"></p>
+                      <hr class="mt-auto"/>
+                      <ul class="mb-0">
+                          <li class="mb-1" v-html="translation.depositType + ' ' + translation.scpoCollDepositType"></li>
+                          <li class="mb-1" v-html="translation.depositRequirements + ' ' + translation.scpoCollDepositRequirements"></li>
+                          <li class="mb-1" v-html="translation.depositDelay + ' ' + translation.scpoCollDepositDelay"></li>
+                          <li v-html="translation.dataAccessDelay + ' ' + translation.scpoCollDataAccessDelay"></li>
+                      </ul>
+                      <hr/>
+                      <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:data.bib@sciencespo.fr">data.bib@sciencespo.fr</a></address>
+                      <p class="text-muted mb-1">{{ translation.guides }} <a href="/misc/guides/Guide_DEPOSIT_DSCPO_20200312.pdf">{{ translation.guidesDeposit }}</a> / <a href="/misc/guides/Guide_DOWNLOAD_DSCPO_20200312.pdf">{{ translation.guidesFind }}</a></p>
+                      <p class="text-muted">{{ translation.learnMore }} <a :href="translation.scpoCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.scpoCollDepositGuide }}</a></p>
+                      <a href="/dataverse/adscpo" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.deposit }}</a>
+                  </article>
+              </div>
+              <div class="col-lg">
+                  <article class="p-4 card d-flex flex-column h-100">
+                      <h4 class="text-primary font-weight-bold text-center mb-4" v-html="translation.cdspCollTitle"></h4>
+                      <p v-html="translation.cdspCollPresentation"></p>
+                      <hr class="mt-auto"/>
+                      <ul class="mb-0">
+                          <li class="mb-1" v-html="translation.depositType + ' ' + translation.cdspCollDepositType"></li>
+                          <li class="mb-1" v-html="translation.depositRequirements + ' ' + translation.cdspCollDepositRequirements"></li>
+                          <li class="mb-1" v-html="translation.depositDelay + ' ' + translation.cdspCollDepositDelay"></li>
+                          <li v-html="translation.dataAccessDelay + ' ' + translation.cdspCollDataAccessDelay"></li>
+                      </ul>
+                      <hr/>
+                      <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:info.cdsp@sciencespo.fr">info.cdsp@sciencespo.fr</a></address>
+                      <p class="text-muted mb-1">{{ translation.learnMore }} <a :href="translation.cdspCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.cdspCollDepositGuide }}</a></p>
+                      <p class="text-muted" style="visibility:hidden">{{ translation.guides }} TBD</p>
+                      <a href="https://cdsp.sciences-po.fr/fr/proposer-des-donnees" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.depositRequest }}</a>
+                  </article>
+              </div>
+          </div>
+      </article>
+  </main>
+  <footer class="bg-light mt-5 py-5 text-muted">
+      <div class="container d-sm-flex justify-content-between">
+          <div>
+            <p class="mb-2"><a :href="translation.scpoLink" class="d-inline-flex align-items-center" style="height:1.5em;"><Logo style="height:1em" class="img-muted"/></a></p>
+            <p class="mb-2">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
+            <p class="mb-0"><small>© 2020 Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
+          </div>
+          <p class="mb-0 mt-4 mt-sm-auto"><a href="https://dataverse.org" target="_blank" rel="noopener" class="text-muted">Powered by <DVLogofull style="height:2.5em" class="img-muted"/></a></p>
+      </div>
+  </footer>
+</template>

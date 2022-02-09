@@ -1,24 +1,28 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-Vue.config.productionTip = false
+if (process.env.NODE_ENV !== 'development') {
+  document.addEventListener("DOMContentLoaded", function() {
+    const html = document.querySelector("html");
+    const head = document.createElement("head");
+    const body = document.createElement("body");
 
-function setup() {
-  return new Vue({
-    render: h => h(App),
-  }).$mount('#app')
-}
-
-if (process.env.NODE_ENV != 'development') {
-  document.addEventListener("DOMContentLoaded", function() { 
     // remove extra DV attributes
-    let html = document.querySelector('html'); html.removeAttribute('xmlns'); html.removeAttribute('xml:lang');
+    html.removeAttribute("xmlns");
+    html.removeAttribute("xml:lang");
+    head.removeAttribute("id");
 
-    // replace html content by our own
-    html.innerHTML = document.querySelector('#content').innerHTML;
+    // move content to head and body
+    document.querySelectorAll("#content > :not(div):not(script):not(noscript)").forEach(e => head.appendChild(e));
+    document.querySelectorAll("#content > *").forEach(e => body.appendChild(e));
 
-    setup();
+    // remove old head and body
+    document.querySelector("head").remove();
+    document.querySelector("body").remove();
+
+    html.appendChild(head);
+    html.appendChild(body);
   });
-} else {
-  setup();
 }
+
+createApp(App).mount('#app');
