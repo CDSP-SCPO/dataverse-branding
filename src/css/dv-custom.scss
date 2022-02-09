@@ -44,12 +44,12 @@ a:not(.btn-default):not(.btn-primary), .btn-link, .text-primary { color: $primar
 .dropdown-menu > li > a { color: #333; }
 .dataverseHeaderDataverseName { color: $primary !important; }
 a:hover, a:focus, .btn-link:hover, .btn-link:focus { color: $primary; text-decoration: none; opacity: 0.75; }
-#dv-sidebar a, #dv-sidebar a:hover { color: $gray-700 !important; }
+#dv-sidebar a, #dv-sidebar a:hover { color: #333 !important; }
 
 .icon-dataverse { color: $primary; }
 .icon-dataset,
 div.citation-block div.preview-icon-block span[class^='icon'] { color: $secondary; }
-.icon-file, .icon-document { color: $gray-500; }
+.icon-file, .icon-document { color: #DDD; }
 .facetTypeLink span[class^=icon] { color: $secondary; }
 
 .card-title-icon-block, .resultDatasetCitationBlock { margin-bottom: 15px !important; }
@@ -57,23 +57,24 @@ table[id$='resultsTable'] td > div { padding: 25px; margin: 7px 0; }
 table[id$='resultsTable'] td > div.dataverseResult,
 table[id$='resultsTable'] td > div.datasetResult,
 table[id$='resultsTable'] td > div {
-	border: 1px solid $gray-200;
+	border: 1px solid #F5F5F5;
 	border-left: 7px solid;
 	border-radius: $border-radius;
-    box-shadow: 0px 0px 5px 1px $gray-200;
+    box-shadow: 0px 0px 5px 1px #F5F5F5;
 }
 table[id$='resultsTable'] td > div.dataverseResult { border-left-color: $primary !important; }
 table[id$='resultsTable'] td > div.datasetResult { border-left-color: $secondary !important; }
-table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !important; }
+table[id$='resultsTable'] td > div.fileResult { border-left-color: #DDD !important; }
+.citation-block .bg-citation { padding: 20px !important; }
 .bg-citation {
 	box-shadow: none;
-	background-color: $gray-200;
+	background-color: #F5F5F5;
 	border: none;
 	padding: 10px !important;
 	border-radius: $border-radius !important;
 }
 
-.pagination > li > a, .ui-paginator-pages > a { color: $primary; }
+.pagination > li > a, .ui-paginator-pages > a { color: $primary !important; }
 .pagination > .active > a,
 .pagination > .active > a:focus,
 .pagination > .active > a:hover,
@@ -83,8 +84,8 @@ table[id$='resultsTable'] td > div.fileResult { border-left-color: $gray-500 !im
 .ui-paginator-pages > a.ui-state-active,
 .ui-paginator-pages > a.ui-state-active:focus,
 .ui-paginator-pages > a.ui-state-active:hover {
-	background-color: $primary;
-	border-color: $primary;
+	background-color: $primary !important;
+	border-color: $primary !important;
 	color: white !important;
 }
 .pagination > li > a:focus,
@@ -101,6 +102,15 @@ div.panel-heading.text-info[data-toggle="collapse"] { color: $primary; }
 div.citation-block div.preview-icon-block { padding-bottom: 0 !important; min-height: unset !important; }
 span.glyphicon-question-sign.tooltip-icon.tooltip-icon { color: $secondary !important; }
 #ajaxStatusPanel img { filter: hue-rotate(150deg); }
+
+#resultsFacetsTopBlock a.facetLink.facetSelected {
+	background-color: #F5F5F5 !important;
+	color: #333 !important;
+	padding: 0.25em 0.5em;
+	border-radius: $border-radius;
+}
+
+.ui-button, th { background-image: none !important; }
 
 @media (min-width: 1200px) {
 	.container {
