@@ -29,6 +29,7 @@ body { font-family: 'Open Sans', sans-serif !important; }
 .navbar-header img { height: 40px !important; }
 .navbar-toggle { margin: 0 0 0 1.5em !important; align-self: stretch; }
 .navbar-default .navbar-nav a { color: #696969; }
+.navbar-default .navbar-nav a[href^="/dataverseuser.xhtml"][href*="editMode=CREATE"] { display: none !important; }
 
 .btn, .btn:hover, .btn:active, .btn:focus, .btn:visited { background-image: none; box-shadow: none; }
 .btn-primary { background-color: $primary !important; border-color: darken($primary, 15%) !important; color: white !important; }
