@@ -37,7 +37,9 @@ const translations = {
     'contact': "Contact:",
     'guides': "Guidebooks:",
     'guidesDeposit': "deposit data",
+    'guidesDepositLink': "https://sciencespo.libguides.com/ld.php?content_id=34525576",
     'guidesFind': "find data",
+    'guidesFindLink': "https://sciencespo.libguides.com/ld.php?content_id=34525575",
     'learnMore': "To find out more:",
     'scpoLink': "https://www.sciencespo.fr/en",
     'tou': "General terms of use",
@@ -72,7 +74,9 @@ const translations = {
     'contact': "Contact :",
     'guides': "Guides :",
     'guidesDeposit': "déposer des données",
+    'guidesDepositLink': "http://sciencespo.libguides.com/ld.php?content_id=34525450",
     'guidesFind': "trouver des données",
+    'guidesFindLink': "http://sciencespo.libguides.com/ld.php?content_id=34525448",
     'learnMore': "Pour en savoir plus :",
     'scpoLink': "https://www.sciencespo.fr/fr",
     'tou': "Conditions générales d'utilisation",
@@ -134,7 +138,7 @@ changeLanguage(language.value);
                       </ul>
                       <hr/>
                       <address class="text-muted mb-1">{{ translation.contact }} <a href="mailto:data.bib@sciencespo.fr">data.bib@sciencespo.fr</a></address>
-                      <p class="text-muted mb-1">{{ translation.guides }} <a href="/misc/guides/Guide_DEPOSIT_DSCPO_20200312.pdf">{{ translation.guidesDeposit }}</a> / <a href="/misc/guides/Guide_DOWNLOAD_DSCPO_20200312.pdf">{{ translation.guidesFind }}</a></p>
+                      <p class="text-muted mb-1">{{ translation.guides }} <a :href="translation.guidesDepositLink">{{ translation.guidesDeposit }}</a> / <a :href="translation.guidesFindLink">{{ translation.guidesFind }}</a></p>
                       <p class="text-muted">{{ translation.learnMore }} <a :href="translation.scpoCollDepositGuideLink" target="_blank" rel="noopener">{{ translation.scpoCollDepositGuide }}</a></p>
                       <a href="/dataverse/adscpo" class="btn btn-outline-primary btn-lg w-100 text-uppercase">{{ translation.deposit }}</a>
                   </article>
