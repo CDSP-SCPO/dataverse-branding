@@ -48,7 +48,7 @@ const translations = {
     'title': "data.sciencespo",
     'researchDataRepo': "Entrepôt de données de la recherche de Sciences Po",
     'exploreBtn': "Explorer l’entrepôt",
-    'presentation': "Lancé en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre Dataverse et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data.",
+    'presentation': "Lancée en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre Dataverse et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data et présent dans la collection catalogues de l'entrepôt national RechercheDataGouv.",
     'scpoCollTitle': "Collection Sciences Po <span class='text-muted'>(auto-dépôt)</a>",
     'scpoCollPresentation': "Cette collection, administrée par la Direction des ressources et de l’information scientifique (DRIS), a vocation à accueillir exclusivement les données produites par les chercheurs affiliés à Sciences Po (données d’enquête, bases de données, etc.), sur le principe d’auto-dépôt accompagné par les services de la DRIS. Cette collection a vocation à être moissonnée par les portails et moteurs de recherche académiques ISIDORE, BASE, OpenAIRE.",
     'scpoCollDepositType': "auto-dépôt avec accompagnement des personnels de la DRIS",
@@ -61,7 +61,7 @@ const translations = {
     'cdspCollPresentation': "Cette collection administrée par le Centre des données socio-politiques (CDSP) comprend le <a href='/dataverse/cdsp'>catalogue d’enquêtes en sciences humaines et sociales traitées et contextualisées par les ingénieurs du CDSP</a> depuis 2005. Ce catalogue rassemble des enquêtes produites à Sciences Po ou dans d'autres institutions françaises et internationales. Il est moissonné par le portail français en SHS, Quetelet-PROGEDO Diffusion et par le <a href='https://datacatalogue.cessda.eu' target='_blank' rel='noopener'>portail européen CESSDA</a>.",
     'cdspCollDepositType': "réalisé auprès du CDSP",
     'cdspCollDepositRequirements': "demande de dépôt et acceptation par le CDSP",
-    'cdspCollDepositDelay': "plusieurs mois",
+    'cdspCollDepositDelay': "généralement un mois après l'acceptation du dépôt, pour une première version",
     'cdspCollDataAccessDelay': "rapide",
     'cdspCollDepositGuide': "procédure de proposition de données au CDSP",
     'cdspCollDepositGuideLink': "https://cdsp.sciences-po.fr/fr/deposer-des-donnees",
@@ -169,7 +169,7 @@ changeLanguage(language.value);
           <div>
             <p class="mb-2"><a :href="translation.scpoLink" class="d-inline-flex align-items-center" style="height:1.5em;"><Logo style="height:1em" class="img-muted"/></a></p>
             <p class="mb-2">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
-            <p class="mb-0"><small>© 2023 Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
+            <p class="mb-0"><small>© {{ new Date().getFullYear() }} Sciences Po<br/><a href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
           </div>
           <p class="mb-0 mt-4 mt-sm-auto"><a href="https://dataverse.org" target="_blank" rel="noopener" class="text-muted">Powered by <DVLogofull style="height:2.5em" class="img-muted"/></a></p>
       </div>
