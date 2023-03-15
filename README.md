@@ -1,17 +1,12 @@
 # Sciences Po branding for Dataverse
 
-## CSS
-
 This repo contains files to customize the appearance of Dataverse for Sciences Po. This includes a custom multilingual homepage built with Vue.js and a custom stylesheet using SCSS.  
 This could be used as a base for other installations branding
 
-- To serve the homepage for development, run `npm run serve`
-- To build for production, run `npm run build`
-
-## Homepage
-
+- To watch the dataverse scss for development, run `npm run watch:dv`
+- To watch the homepage scss for development, run `npm run watch`
 - To serve the homepage for development, run `npm run dev`
-- To build for production, run `npm run build`
+- To build the homepage + css for production, run `npm run build`
 
 ## Explanation of dist files:
 
