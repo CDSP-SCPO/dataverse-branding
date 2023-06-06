@@ -16,7 +16,7 @@
     "@vitejs/plugin-vue": "^2.2.0",
     "bootstrap": "^4.6.1",
     "sass": "^1.49.7",
-    "vite": "^2.9.13",
+    "vite": "^2.9.16",
     "vite-plugin-singlefile": "^0.6.3",
     "vite-svg-loader": "^3.1.2"
   }
