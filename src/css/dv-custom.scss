@@ -124,3 +124,7 @@ span.glyphicon-question-sign.tooltip-icon.tooltip-icon { color: $secondary !impo
 		padding: 10px !important;
 	}
 }
+
+ul.navbar-right li:nth-child(1) {
+  display: none;
+}
