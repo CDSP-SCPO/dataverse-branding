@@ -192,7 +192,7 @@ const formatDate = (isoDate) => {
 
         <main v-if="visibleSection !== 'cdsp' && visibleSection !== 'adsp'"
               class="flex-shrink-0 d-flex align-items-center">
-            <div class="container">
+            <div class="container container-custom">
                 <!-- Section principale -->
                 <div class="row justify-content-center align-items-center">
                     <!-- Premier bloc -->

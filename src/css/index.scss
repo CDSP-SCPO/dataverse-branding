@@ -117,3 +117,12 @@ p:last-child {
 .to-gap {
   gap: 1em 0em;
 }
+
+
+@media (min-width: 1430px) and (max-width: 1460px) {
+  .container-custom {
+    max-width: 990px;
+    margin-top: 5rem;
+
+  }
+}
