@@ -7,6 +7,7 @@ import DVLogofull from './assets/dv-logo.svg?component';
 import LogoFULL from './assets/logo-full-FR.svg?component';
 import LogoFULLEN from './assets/logo-full-EN.svg?component';
 import LeftArrow from './assets/left-arrow.svg?component';
+import EmblemScpo from './assets/emblem.svg'
 
 const translations = {
     'en': {
@@ -16,8 +17,8 @@ const translations = {
         'researchDataRepo': "Research data repository of Sciences Po",
         'exploreBtn': "Find and explore data",
         'presentation': "Launched in February 2020, data.sciencespo is a repository that offers visibility, sharing and preservation of data collected, curated and processed at Sciences Po. The repository is based on the Dataverse open-source software and organised into collections. It is indexed by re3data and its resources are showcased on the national research data repository <a href='https://entrepot.recherche.data.gouv.fr/dataverse/sciencespo'>Recherche Data Gouv</a>.",
-        'scpoCollTitle': "Sciences Po collection <span class='text-muted'>(self-deposit)</span>",
-        'scpoCollPresentation': "Based on the principle of self-deposit, this collection managed by the <a href='https://www.sciencespo.fr/bibliotheque/en.html'>DRIS</a> services enables rapid deposit of data produced by Sciences Po researchers.",
+        'scpoCollTitle': "SCIENCES PO COLLECTION <br> <span class='text-muted'>(self-deposit)</span>",
+        'scpoCollPresentation': "A data catalog, based on self-deposit principle, managed and supported by the <a href='https://www.sciencespo.fr/bibliotheque/fr/services/doctorants-et-chercheurs/gestion-des-donnees-de-la-recherche/'>DRIS</a>, with the Sciences Po's research units.",
         'scpoCollDepositType': "self-deposit assisted by the DRIS staff",
         'scpoCollDepositRequirements': "being affiliated with Sciences Po",
         'scpoCollDepositDelay': "immediate",
@@ -65,8 +66,8 @@ const translations = {
         'researchDataRepo': "Entrepôt de données de la recherche de Sciences Po",
         'exploreBtn': "Explorer l’entrepôt",
         'presentation': "Lancée en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre Dataverse et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data et présent dans la collection catalogues de l'entrepôt national <a href='https://entrepot.recherche.data.gouv.fr/dataverse/sciencespo'>Recherche Data Gouv</a>.",
-        'scpoCollTitle': "Collection Sciences Po <span class='text-muted'>(auto-dépôt)</a>",
-        'scpoCollPresentation': "Fondée sur le principe de l'auto-dépôt, cette collection gérée par les services de la <a href='https://www.sciencespo.fr/bibliotheque/fr.html'>DRIS</a> permet un dépôt rapide des données produites par les chercheurs de Sciences Po",
+        'scpoCollTitle': "COLLECTION SCIENCES PO <br> <span class='text-muted'>(auto-dépôt)</a>",
+        'scpoCollPresentation': "Un catalogue de données, fondé sur le principe de l'auto-dépôt, géré et accompagné par la <a href='https://www.sciencespo.fr/bibliotheque/fr/services/doctorants-et-chercheurs/gestion-des-donnees-de-la-recherche/'>DRIS</a> en lien avec les unités de recherche de Sciences Po.",
         'scpoCollDepositType': "auto-dépôt avec accompagnement des personnels de la DRIS",
         'scpoCollDepositRequirements': "être affilié à Sciences Po",
         'scpoCollDepositDelay': "instantané",
@@ -209,19 +210,25 @@ const formatDate = (isoDate) => {
                         </div>
                     </div>
                     <!-- Deuxième bloc -->
-                    <div class="col-lg-6">
-                        <div class="block mb-5">
-                            <a href="#" @click.prevent="showSection('adsp')"
-                               class="d-flex flex-column align-items-center text-center">
-                                <div class="svg-container align-self-stretch mb-3">
-                                    <h4 class="text-primary font-weight-bold text-center mb-4 mt-2"
-                                        v-html="translation.scpoCollTitle" style="font-size: 2.2em"></h4>
+                   <div class="col-lg-6">
+    <div class="block mb-5 position-relative"> <!-- position-relative ajouté ici -->
+        <a href="#" @click.prevent="showSection('adsp')" class="d-flex flex-column align-items-center text-center">
+            <div class="d-flex align-items-start w-100 mb-3">
+                <EmblemScpo class="svg-container"
+                    style="position: absolute; left: 0; top: 0; height: auto; width: auto;" /> <!-- position: absolute ajouté ici -->
+                <h4 class="text-primary font-weight-bold mb-4 mt-2"
+                    v-html="translation.scpoCollTitle"
+                    style="font-size: 2em; margin-left: 4em;"></h4> <!-- margin-left ajusté ici -->
+            </div>
+        </a>
+        <p class="pt-2" v-html="translation.scpoCollPresentation"></p>
+    </div>
+</div>
 
-                                </div>
-                            </a>
-                            <p class="pt-2" v-html="translation.scpoCollPresentation"></p>
-                        </div>
-                    </div>
+
+
+
+
                 </div>
             </div>
         </main>
