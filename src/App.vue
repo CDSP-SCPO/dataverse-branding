@@ -17,7 +17,7 @@ const translations = {
         'researchDataRepo': "Research data repository of Sciences Po",
         'exploreBtn': "Find and explore data",
         'presentation': "Launched in February 2020, data.sciencespo is a repository that offers visibility, sharing and preservation of data collected, curated and processed at Sciences Po. The repository is based on the Dataverse open-source software and organised into collections. It is indexed by re3data and its resources are showcased on the national research data repository <a href='https://entrepot.recherche.data.gouv.fr/dataverse/sciencespo'>Recherche Data Gouv</a>.",
-        'scpoCollTitle': "SCIENCES PO COLLECTION <br> <span class='text-muted'>(self-deposit)</span>",
+        'scpoCollTitle': "SCIENCES&nbsp;PO COLLECTION <br> <span class='text-muted'>(self-deposit)</span>",
         'scpoCollPresentation': "A data catalog, based on self-deposit principle, managed and supported by the <a href='https://www.sciencespo.fr/bibliotheque/fr/services/doctorants-et-chercheurs/gestion-des-donnees-de-la-recherche/'>DRIS</a>, with the Sciences Po's research units.",
         'scpoCollDepositType': "self-deposit assisted by the DRIS staff",
         'scpoCollDepositRequirements': "being affiliated with Sciences Po",
@@ -26,7 +26,7 @@ const translations = {
         'scpoCollDepositGuide': "thematic guide on research data management",
         'scpoCollDepositGuideLink': "https://sciencespo.libguides.com/research-data",
         'cdspCollTitle': "CDSP collection",
-        'cdspCollPresentation': "A catalog of surveys in the humanities and social sciences, certified <a href='https://www.coretrustseal.org/about/'>CoreTrustSeal</a>, whose repository is supported by <a href='https://cdsp.sciences-po.fr/en/'>CDDP</a> engineers.",
+        'cdspCollPresentation': "A catalog of surveys in the humanities and social sciences, certified <a href='https://www.coretrustseal.org/about/'>CoreTrustSeal</a>, whose deposit is supported by <a href='https://cdsp.sciences-po.fr/en/'>CDSP</a> data managers.",
         'cdspCollDepositType': "curated at the CDSP",
         'cdspCollDepositRequirements': "deposit request and agreement",
         'cdspCollDepositDelay': "several months",
@@ -66,7 +66,7 @@ const translations = {
         'researchDataRepo': "Entrepôt de données de la recherche de Sciences Po",
         'exploreBtn': "Explorer l’entrepôt",
         'presentation': "Lancée en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre Dataverse et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data et présent dans la collection catalogues de l'entrepôt national <a href='https://entrepot.recherche.data.gouv.fr/dataverse/sciencespo'>Recherche Data Gouv</a>.",
-        'scpoCollTitle': "COLLECTION SCIENCES PO <br> <span class='text-muted'>(auto-dépôt)</a>",
+        'scpoCollTitle': "COLLECTION SCIENCES&nbsp;PO <br> <span class='text-muted'>(auto-dépôt)</span>",
         'scpoCollPresentation': "Un catalogue de données, fondé sur le principe de l'auto-dépôt, géré et accompagné par la <a href='https://www.sciencespo.fr/bibliotheque/fr/services/doctorants-et-chercheurs/gestion-des-donnees-de-la-recherche/'>DRIS</a> en lien avec les unités de recherche de Sciences Po.",
         'scpoCollDepositType': "auto-dépôt avec accompagnement des personnels de la DRIS",
         'scpoCollDepositRequirements': "être affilié à Sciences Po",
@@ -191,54 +191,45 @@ const formatDate = (isoDate) => {
             </div>
         </header>
 
-        <main v-if="visibleSection !== 'cdsp' && visibleSection !== 'adsp'"
-              class="flex-shrink-0 d-flex align-items-center">
-            <div class="container container-custom">
-                <!-- Section principale -->
-                <div class="row justify-content-center align-items-center">
-                    <!-- Premier bloc -->
-                    <div class="col-lg-6">
-                        <div class="block mb-5">
-                            <a href="#" @click.prevent="showSection('cdsp')"
-                               class="d-flex flex-column align-items-center text-center">
-                                <div class="align-self-stretch mb-3">
-                                    <LogoFULLEN v-if="language === 'en'" class="svg-container"/>
-                                    <LogoFULL v-else class="svg-container"/>
-                                </div>
-                            </a>
-                            <p class="pt-2" v-html="translation.cdspCollPresentation"></p>
+        <main v-if="visibleSection !== 'cdsp' && visibleSection !== 'adsp'" class="flex-shrink-0 d-flex align-items-center">
+    <div class="container container-custom">
+        <div class="row justify-content-center align-items-start">
+            <!-- Premier bloc -->
+            <div class="col-lg-4 col-xl-6 custom-col">
+                <div class="d-flex flex-column mb-5 mt-5" style="flex: 1;"> <!-- Ajout de flex: 1 -->
+                    <a href="#" @click.prevent="showSection('cdsp')" class="d-flex flex-column align-items-center text-center block">
+                        <div class="align-self-stretch mb-3">
+                            <LogoFULLEN v-if="language === 'en'" class="svg-container"/>
+                            <LogoFULL v-else class="svg-container"/>
                         </div>
-                    </div>
-                    <!-- Deuxième bloc -->
-                   <div class="col-lg-6">
-    <div class="block mb-5 position-relative"> <!-- position-relative ajouté ici -->
-        <a href="#" @click.prevent="showSection('adsp')" class="d-flex flex-column align-items-center text-center">
-            <div class="d-flex align-items-start w-100 mb-3">
-                <EmblemScpo class="svg-container"
-                    style="position: absolute; left: 0; top: 0; height: auto; width: auto;" /> <!-- position: absolute ajouté ici -->
-                <h4 class="text-primary font-weight-bold mb-4 mt-2"
-                    v-html="translation.scpoCollTitle"
-                    style="font-size: 2em; margin-left: 4em;"></h4> <!-- margin-left ajusté ici -->
-            </div>
-        </a>
-        <p class="pt-2" v-html="translation.scpoCollPresentation"></p>
-    </div>
-</div>
-
-
-
-
-
+                    </a>
+                    <p class="pt-2 mb-0" v-html="translation.cdspCollPresentation"></p> <!-- Suppression de la marge en bas -->
                 </div>
             </div>
-        </main>
+            <!-- Deuxième bloc -->
+            <div class="col-lg-4 col-xl-6 custom-col">
+                <div class="d-flex flex-column mb-5 mt-5 position-relative" style="flex: 1;"> <!-- Ajout de flex: 1 -->
+                    <a href="#" @click.prevent="showSection('adsp')" class="d-flex flex-column align-items-center text-center block">
+                        <div class="d-flex align-items-start w-100 mb-3">
+                            <EmblemScpo class="svg-container emblem-scpo" style="position: absolute; left: 0; top: 0; height: auto; width: auto;"/>
+                            <h4 class="text-primary font-weight-bold mt-2" v-html="translation.scpoCollTitle" style="font-size: 2em; margin-left: 4em;"></h4>
+                        </div>
+                    </a>
+                    <p class="pt-2 mb-0" v-html="translation.scpoCollPresentation"></p> <!-- Suppression de la marge en bas -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 
         <main v-if="visibleSection === 'cdsp'" class="pb-5">
 
 
-            <div class="container">
+            <div class="container-md">
                 <a href="/" class="position-absolute mt-2 grey-link">
-                    <LeftArrow class="svg-arrow-container mr-2"/>{{ translation.home }}</a>
+                    <LeftArrow class="svg-arrow-container mr-2"/>
+                    {{ translation.home }}</a>
                 <div>
                     <!-- Section conditionnelle pour 'Collection CDSP' -->
                     <article id="id_cdsp" class="pt-5">
@@ -266,37 +257,37 @@ const formatDate = (isoDate) => {
                                         v-html="translation.tutoTitle"></h4>
                                     <p class="mb-4" v-html="translation.tutoIntro"></p>
 
-<!--
-                                    <div class="row to-gap justify-content-center">
-                                        <div class="col-5">
-                                            <h5 class="text-center" v-html="translation.cdspCollCreateAccount"></h5>
-                                            <div class="video-thumbnail">
-                                                <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
-                                                    <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
-                                                         alt="Video Thumbnail" class="thumbnail-image">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
-                                            <h5 class="text-center" v-html="translation.cdspCollFindRessources"></h5>
-                                            <div class="video-thumbnail">
-                                                <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
-                                                    <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
-                                                         alt="Video Thumbnail" class="thumbnail-image">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
-                                            <h5 class="text-center" v-html="translation.cdspCollDownloadData"></h5>
-                                            <div class="video-thumbnail">
-                                                <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
-                                                    <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
-                                                         alt="Video Thumbnail" class="thumbnail-image">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
--->
+                                    <!--
+                                                                        <div class="row to-gap justify-content-center">
+                                                                            <div class="col-5">
+                                                                                <h5 class="text-center" v-html="translation.cdspCollCreateAccount"></h5>
+                                                                                <div class="video-thumbnail">
+                                                                                    <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
+                                                                                        <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
+                                                                                             alt="Video Thumbnail" class="thumbnail-image">
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-5">
+                                                                                <h5 class="text-center" v-html="translation.cdspCollFindRessources"></h5>
+                                                                                <div class="video-thumbnail">
+                                                                                    <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
+                                                                                        <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
+                                                                                             alt="Video Thumbnail" class="thumbnail-image">
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-5">
+                                                                                <h5 class="text-center" v-html="translation.cdspCollDownloadData"></h5>
+                                                                                <div class="video-thumbnail">
+                                                                                    <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
+                                                                                        <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
+                                                                                             alt="Video Thumbnail" class="thumbnail-image">
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                    -->
 
 
                                 </article>
@@ -326,7 +317,8 @@ const formatDate = (isoDate) => {
         <main v-if="visibleSection === 'adsp'" class="pb-5">
             <div class="container">
                 <a href="/" class="position-absolute mt-2 grey-link">
-                    <LeftArrow class="svg-arrow-container mr-2"/>{{ translation.home }}</a>
+                    <LeftArrow class="svg-arrow-container mr-2"/>
+                    {{ translation.home }}</a>
                 <div class="container">
                     <article id="id_adsp" class="pt-5" v-if="visibleSection === 'adsp'">
                         <div class="row text-center mb-5">

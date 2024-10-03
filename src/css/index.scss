@@ -13,6 +13,7 @@ header {
 
 main {
   flex: 1;
+  min-height: 70vh;
 }
 
 a:not(.btn):hover {
@@ -55,7 +56,6 @@ p:last-child {
 }
 
 
-
 .video-thumbnail {
     position: relative;
     display: inline-block;
@@ -77,6 +77,10 @@ p:last-child {
   color: black;
   text-decoration: none;
   background-color: transparent;
+}
+
+.block {
+  min-height: 10em;
 }
 
 
@@ -118,11 +122,28 @@ p:last-child {
   gap: 1em 0em;
 }
 
-
-@media (min-width: 1430px) and (max-width: 1460px) {
-  .container-custom {
-    max-width: 990px;
-    margin-top: 5rem;
-
+@media (max-width: 1290px) {
+  .container {
+    max-width: 1030px;
   }
 }
+
+@media (min-width: 1200px) and (max-width: 1920px) {
+    .custom-col {
+        flex: 0 0 33.33%; /* Largeur 33.33% pour col-4 */
+        max-width: 33.33%; /* Largeur maximale 33.33% */
+    }
+
+     .custom-col:first-child {
+        margin-right: 14%; /* Ajoute un espace de 4% entre les deux colonnes */
+    }
+}
+
+@media (min-width: 1920px) {
+    .custom-col {
+        flex: 0 0 50%; /* Rétablit à 50% pour col-6 */
+        max-width: 50%; /* Largeur maximale 50% */
+    }
+}
+
+
