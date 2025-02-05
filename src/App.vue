@@ -8,6 +8,7 @@ import LogoFULL from './assets/logo-full-FR.svg?component';
 import LogoFULLEN from './assets/logo-full-EN.svg?component';
 import LeftArrow from './assets/left-arrow.svg?component';
 import EmblemScpo from './assets/emblem.svg'
+import Test from './assets/creation-compte.png'
 
 const translations = {
     'en': {
@@ -26,15 +27,15 @@ const translations = {
         'scpoCollDepositGuide': "thematic guide on research data management",
         'scpoCollDepositGuideLink': "https://sciencespo.libguides.com/research-data",
         'cdspCollTitle': "CDSP collection",
-        'cdspCollPresentation': "A catalog of surveys in the humanities and social sciences, certified <a href='https://www.coretrustseal.org/about/'>CoreTrustSeal</a>, whose deposit is supported by <a href='https://cdsp.sciences-po.fr/en/'>CDSP</a> data managers.",
+        'cdspCollPresentation': "A catalog of surveys in the humanities and social sciences, certified <a href='https://www.coretrustseal.org/about/'>CoreTrustSeal</a>, whose curation is supported by <a href='https://www.sciencespo.fr/cdsp/en/'>CDSP</a> data engineers. The survey selection criteria are available <a href='https://www.sciencespo.fr/cdsp/files/criteres-selection-enquetes-page-cdsp_1VJTWhA.pdf'>here</a>.",
         'cdspCollDepositType': "curated at the CDSP",
         'cdspCollDepositRequirements': "deposit request and agreement",
         'cdspCollDepositDelay': "several months",
         'cdspCollDataAccessDelay': "quick",
         'cdspCollDepositGuide': "data deposit at the CDSP",
-        'cdspCollCreateAccount': "Create account",
-        'cdspCollFindRessources': "Find ressources",
-        'cdspCollDownloadData': "Download data",
+        'cdspCollCreateAccount': "Creating an account",
+        'cdspCollFindRessources': "Finding data <br>",
+        'cdspCollDownloadData': "Downloading data",
         'ExploreData': "Explore data",
         'cdspCollDepositGuideLink': "https://cdsp.sciences-po.fr/en/deposer-des-donnees",
         'cdspCollFindGuide': "data access",
@@ -47,7 +48,6 @@ const translations = {
         'deposit': "Deposit data",
         'depositRequest': "Make a deposit request",
         'tutoTitle': "Tutorials",
-        'tutoIntro': "The CDSP is currently working on the production of tutorials for users. The tutorials will soon be available in this section.",
         'contact': "Contact:",
         'guides': "Guidebooks:",
         'guidesDeposit': "deposit data",
@@ -75,14 +75,14 @@ const translations = {
         'scpoCollDepositGuide': "guide thématique sur les données de la recherche",
         'scpoCollDepositGuideLink': "https://sciencespo.libguides.com/donnees-de-la-recherche",
         'cdspCollTitle': "Collection CDSP",
-        'cdspCollPresentation': "Un catalogue d'enquêtes en sciences humaines et sociales, certifié <a href='https://www.coretrustseal.org/about/'>CoreTrustSeal</a>, dont le dépôt est accompagné par les ingénieurs du <a href='https://cdsp.sciences-po.fr/fr/'>CDSP</a>.",
+        'cdspCollPresentation': "Un catalogue d'enquêtes en sciences humaines et sociales, certifié <a href='https://www.coretrustseal.org/about/'>CoreTrustSeal</a>, dont la curation est réalisée par les ingénieurs du <a href='https://www.sciencespo.fr/cdsp/fr/'>CDSP</a>. Les critères de sélection des enquêtes sont consultables <a href='https://www.sciencespo.fr/cdsp/files/criteres-selection-enquetes-page-cdsp_1VJTWhA.pdf'>ici</a>.",
         'cdspCollDepositType': "réalisé auprès du CDSP",
         'cdspCollDepositRequirements': "demande de dépôt et acceptation par le CDSP",
         'cdspCollDepositDelay': "généralement un mois après l'acceptation du dépôt, pour une première version",
         'cdspCollDataAccessDelay': "rapide",
         'cdspCollDepositGuide': "Procédures d'accès aux données",
-        'cdspCollCreateAccount': "Se créer un compte utilisateur",
-        'cdspCollFindRessources': "Trouver des ressources",
+        'cdspCollCreateAccount': "Se créer un compte",
+        'cdspCollFindRessources': "Trouver des données",
         'cdspCollDownloadData': "Télécharger des données",
         'ExploreData': "Explorer les données",
         'cdspCollDepositGuideLink': "https://cdsp.sciences-po.fr/fr/deposer-des-donnees",
@@ -96,7 +96,6 @@ const translations = {
         'deposit': "Déposer des données",
         'depositRequest': "Faire une demande de dépôt",
         'tutoTitle': "Tutoriels",
-        'tutoIntro': "Le CDSP travaille actuellement à la réalisation de tutoriels à destinations des utilisateurs. <br> Les tutoriels seront bientôt disponibles dans cette section.",
         'contact': "Contact :",
         'guides': "Guides :",
         'guidesDeposit': "déposer des données",
@@ -191,36 +190,44 @@ const formatDate = (isoDate) => {
             </div>
         </header>
 
-        <main v-if="visibleSection !== 'cdsp' && visibleSection !== 'adsp'" class="flex-shrink-0 d-flex align-items-center">
-    <div class="container container-custom">
-        <div class="row justify-content-center align-items-start">
-            <!-- Premier bloc -->
-            <div class="col-lg-4 col-xl-6 custom-col">
-                <div class="d-flex flex-column mb-5 mt-5" style="flex: 1;"> <!-- Ajout de flex: 1 -->
-                    <a href="#" @click.prevent="showSection('cdsp')" class="d-flex flex-column align-items-center text-center block">
-                        <div class="align-self-stretch mb-3">
-                            <LogoFULLEN v-if="language === 'en'" class="svg-container"/>
-                            <LogoFULL v-else class="svg-container"/>
+        <main v-if="visibleSection !== 'cdsp' && visibleSection !== 'adsp'"
+              class="flex-shrink-0 d-flex align-items-center">
+            <div class="container container-custom">
+                <div class="row justify-content-center align-items-start">
+                    <!-- Premier bloc -->
+                    <div class="col-lg-4 col-xl-6 custom-col">
+                        <div class="d-flex flex-column mb-5 mt-5" style="flex: 1;"> <!-- Ajout de flex: 1 -->
+                            <a href="#" @click.prevent="showSection('cdsp')"
+                               class="d-flex flex-column align-items-center text-center block">
+                                <div class="align-self-stretch mb-3">
+                                    <LogoFULLEN v-if="language === 'en'" class="svg-container"/>
+                                    <LogoFULL v-else class="svg-container"/>
+                                </div>
+                            </a>
+                            <p class="pt-2 mb-0" v-html="translation.cdspCollPresentation"></p>
+                            <!-- Suppression de la marge en bas -->
                         </div>
-                    </a>
-                    <p class="pt-2 mb-0" v-html="translation.cdspCollPresentation"></p> <!-- Suppression de la marge en bas -->
+                    </div>
+                    <!-- Deuxième bloc -->
+                    <div class="col-lg-4 col-xl-6 custom-col">
+                        <div class="d-flex flex-column mb-5 mt-5 position-relative" style="flex: 1;">
+                            <!-- Ajout de flex: 1 -->
+                            <a href="#" @click.prevent="showSection('adsp')"
+                               class="d-flex flex-column align-items-center text-center block">
+                                <div class="d-flex align-items-start w-100 mb-3">
+                                    <EmblemScpo class="svg-container emblem-scpo"
+                                                style="position: absolute; left: 0; top: 0; height: auto; width: auto;"/>
+                                    <h4 class="text-primary font-weight-bold mt-2" v-html="translation.scpoCollTitle"
+                                        style="font-size: 2em; margin-left: 4em;"></h4>
+                                </div>
+                            </a>
+                            <p class="pt-2 mb-0" v-html="translation.scpoCollPresentation"></p>
+                            <!-- Suppression de la marge en bas -->
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Deuxième bloc -->
-            <div class="col-lg-4 col-xl-6 custom-col">
-                <div class="d-flex flex-column mb-5 mt-5 position-relative" style="flex: 1;"> <!-- Ajout de flex: 1 -->
-                    <a href="#" @click.prevent="showSection('adsp')" class="d-flex flex-column align-items-center text-center block">
-                        <div class="d-flex align-items-start w-100 mb-3">
-                            <EmblemScpo class="svg-container emblem-scpo" style="position: absolute; left: 0; top: 0; height: auto; width: auto;"/>
-                            <h4 class="text-primary font-weight-bold mt-2" v-html="translation.scpoCollTitle" style="font-size: 2em; margin-left: 4em;"></h4>
-                        </div>
-                    </a>
-                    <p class="pt-2 mb-0" v-html="translation.scpoCollPresentation"></p> <!-- Suppression de la marge en bas -->
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+        </main>
 
 
         <main v-if="visibleSection === 'cdsp'" class="pb-5">
@@ -255,39 +262,36 @@ const formatDate = (isoDate) => {
                                 <article class="p-4 card d-flex flex-column h-100">
                                     <h4 class="text-primary font-weight-bold text-center mb-4"
                                         v-html="translation.tutoTitle"></h4>
-                                    <p class="mb-4" v-html="translation.tutoIntro"></p>
 
-                                    <!--
-                                                                        <div class="row to-gap justify-content-center">
-                                                                            <div class="col-5">
-                                                                                <h5 class="text-center" v-html="translation.cdspCollCreateAccount"></h5>
-                                                                                <div class="video-thumbnail">
-                                                                                    <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
-                                                                                        <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
-                                                                                             alt="Video Thumbnail" class="thumbnail-image">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-5">
-                                                                                <h5 class="text-center" v-html="translation.cdspCollFindRessources"></h5>
-                                                                                <div class="video-thumbnail">
-                                                                                    <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
-                                                                                        <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
-                                                                                             alt="Video Thumbnail" class="thumbnail-image">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-5">
-                                                                                <h5 class="text-center" v-html="translation.cdspCollDownloadData"></h5>
-                                                                                <div class="video-thumbnail">
-                                                                                    <a href="https://www.youtube.com/watch?v=iTOrmvRkL6U" target="_blank">
-                                                                                        <img src="https://img.youtube.com/vi/iTOrmvRkL6U/0.jpg"
-                                                                                             alt="Video Thumbnail" class="thumbnail-image">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                    -->
+                                    <div class="row to-gap justify-content-center">
+                                        <div class="col-6">
+                                            <h5 class="text-center title-video font-weight-bold" v-html="translation.cdspCollCreateAccount"></h5>
+                                            <div class="video-thumbnail">
+                                                <a href="https://www.youtube.com/watch?v=GdLg2PFQgH4" target="_blank">
+                                                    <img src="https://img.youtube.com/vi/GdLg2PFQgH4/0.jpg"
+                                                         alt="Video Thumbnail" class="thumbnail-image">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5 class="text-center title-video font-weight-bold" v-html="translation.cdspCollFindRessources"></h5>
+                                            <div class="video-thumbnail">
+                                                <a href="https://www.youtube.com/watch?v=1jEram-UFC4" target="_blank">
+                                                    <img src="https://img.youtube.com/vi/1jEram-UFC4/0.jpg"
+                                                         alt="Video Thumbnail" class="thumbnail-image">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5 class="text-center title-video font-weight-bold" v-html="translation.cdspCollDownloadData"></h5>
+                                            <div class="video-thumbnail">
+                                                <a href="https://www.youtube.com/watch?v=qs6-IFfHmls" target="_blank">
+                                                    <img src="https://img.youtube.com/vi/qs6-IFfHmls/0.jpg"
+                                                         alt="Video Thumbnail" class="thumbnail-image">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
                                 </article>
@@ -415,6 +419,8 @@ export default {
     }
 };
 </script>
+
+
 
 
 

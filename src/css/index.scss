@@ -122,6 +122,14 @@ p:last-child {
   gap: 1em 0em;
 }
 
+.title-video {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 @media (max-width: 1290px) {
   .container {
     max-width: 1030px;
@@ -134,9 +142,6 @@ p:last-child {
         max-width: 33.33%; /* Largeur maximale 33.33% */
     }
 
-     .custom-col:first-child {
-        margin-right: 14%; /* Ajoute un espace de 4% entre les deux colonnes */
-    }
 }
 
 @media (min-width: 1920px) {
