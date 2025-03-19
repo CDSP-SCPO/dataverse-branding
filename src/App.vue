@@ -8,7 +8,7 @@ import LogoFULL from './assets/logo-full-FR.svg?component';
 import LogoFULLEN from './assets/logo-full-EN.svg?component';
 import LeftArrow from './assets/left-arrow.svg?component';
 import EmblemScpo from './assets/emblem.svg'
-import Test from './assets/creation-compte.png'
+import DVLogo from './assets/dv-logo-red.svg?component';
 
 const translations = {
     'en': {
@@ -63,7 +63,7 @@ const translations = {
         'title': "data.sciencespo",
         'login': "Se connecter",
         'home': "Accueil",
-        'researchDataRepo': "Entrepôt de données de la recherche de Sciences Po",
+        'researchDataRepo': "L'entrepôt de données de la recherche de Sciences Po",
         'exploreBtn': "Explorer l’entrepôt",
         'presentation': "Lancée en février 2020, data.sciencespo est une plateforme qui facilite la visibilité, la valorisation, le partage et la préservation des données de la recherche en SHS collectées ou traitées à Sciences Po, ainsi que dans d’autres institutions. L’entrepôt est basé sur la solution logicielle libre Dataverse et structuré en collections. Il est référencé par le registre de référence des données de la recherche re3data et présent dans la collection catalogues de l'entrepôt national <a href='https://entrepot.recherche.data.gouv.fr/dataverse/sciencespo'>Recherche Data Gouv</a>.",
         'scpoCollTitle': "COLLECTION SCIENCES&nbsp;PO <br> <span class='text-muted'>(auto-dépôt)</span>",
@@ -175,7 +175,6 @@ const formatDate = (isoDate) => {
 
 <template>
     <div class="page-container">
-
         <header>
             <div id="id_accueil" class="container d-sm-flex justify-content-between align-items-center py-4 flex-wrap">
                 <a href="/">
@@ -191,38 +190,41 @@ const formatDate = (isoDate) => {
         </header>
 
         <main v-if="visibleSection !== 'cdsp' && visibleSection !== 'adsp'"
-              class="flex-shrink-0 d-flex align-items-center">
-            <div class="container container-custom">
+              class="flex-shrink-0 d-flex flex-column align-items-center">
+            <article
+                class="text-center mb-5 py-5 mt-5 position-relative d-flex flex-column justify-content-center align-items-center">
+                <h1 class="text-primary mb-2">data.sciencespo</h1>
+                <h4 class="text-muted mb-5">{{ translation.researchDataRepo }}</h4>
+                <DVLogo class="background-logo"/>
+            </article>
+            <div class="container container-custom mt-1">
                 <div class="row justify-content-center align-items-start">
                     <!-- Premier bloc -->
                     <div class="col-lg-4 col-xl-6 custom-col">
-                        <div class="d-flex flex-column mb-5 mt-5" style="flex: 1;"> <!-- Ajout de flex: 1 -->
+                        <div class="d-flex flex-column mb-5 mt-5" style="flex: 1;">
                             <a href="#" @click.prevent="showSection('cdsp')"
                                class="d-flex flex-column align-items-center text-center block">
                                 <div class="align-self-stretch mb-3">
-                                    <LogoFULLEN v-if="language === 'en'" class="svg-container"/>
-                                    <LogoFULL v-else class="svg-container"/>
+                                    <LogoFULLEN v-if="language === 'en'" class="svg-container" alt="Banque de données du CDSP"/>
+                                    <LogoFULL v-else class="svg-container"  alt="Banque de données du CDSP"/>
                                 </div>
                             </a>
                             <p class="pt-2 mb-0" v-html="translation.cdspCollPresentation"></p>
-                            <!-- Suppression de la marge en bas -->
                         </div>
                     </div>
                     <!-- Deuxième bloc -->
                     <div class="col-lg-4 col-xl-6 custom-col">
                         <div class="d-flex flex-column mb-5 mt-5 position-relative" style="flex: 1;">
-                            <!-- Ajout de flex: 1 -->
                             <a href="#" @click.prevent="showSection('adsp')"
                                class="d-flex flex-column align-items-center text-center block">
                                 <div class="d-flex align-items-start w-100 mb-3">
-                                    <EmblemScpo class="svg-container emblem-scpo"
+                                    <EmblemScpo class="svg-container emblem-scpo" alt="Auto-dépôt"
                                                 style="position: absolute; left: 0; top: 0; height: auto; width: auto;"/>
                                     <h4 class="text-primary font-weight-bold mt-2" v-html="translation.scpoCollTitle"
                                         style="font-size: 2em; margin-left: 4em;"></h4>
                                 </div>
                             </a>
                             <p class="pt-2 mb-0" v-html="translation.scpoCollPresentation"></p>
-                            <!-- Suppression de la marge en bas -->
                         </div>
                     </div>
                 </div>
@@ -265,7 +267,8 @@ const formatDate = (isoDate) => {
 
                                     <div class="row to-gap justify-content-center">
                                         <div class="col-6">
-                                            <h5 class="text-center title-video font-weight-bold" v-html="translation.cdspCollCreateAccount"></h5>
+                                            <h5 class="text-center title-video font-weight-bold"
+                                                v-html="translation.cdspCollCreateAccount"></h5>
                                             <div class="video-thumbnail">
                                                 <a href="https://www.youtube.com/watch?v=GdLg2PFQgH4" target="_blank">
                                                     <img src="https://img.youtube.com/vi/GdLg2PFQgH4/0.jpg"
@@ -274,7 +277,8 @@ const formatDate = (isoDate) => {
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <h5 class="text-center title-video font-weight-bold" v-html="translation.cdspCollFindRessources"></h5>
+                                            <h5 class="text-center title-video font-weight-bold"
+                                                v-html="translation.cdspCollFindRessources"></h5>
                                             <div class="video-thumbnail">
                                                 <a href="https://www.youtube.com/watch?v=1jEram-UFC4" target="_blank">
                                                     <img src="https://img.youtube.com/vi/1jEram-UFC4/0.jpg"
@@ -283,7 +287,8 @@ const formatDate = (isoDate) => {
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <h5 class="text-center title-video font-weight-bold" v-html="translation.cdspCollDownloadData"></h5>
+                                            <h5 class="text-center title-video font-weight-bold"
+                                                v-html="translation.cdspCollDownloadData"></h5>
                                             <div class="video-thumbnail">
                                                 <a href="https://www.youtube.com/watch?v=qs6-IFfHmls" target="_blank">
                                                     <img src="https://img.youtube.com/vi/qs6-IFfHmls/0.jpg"
