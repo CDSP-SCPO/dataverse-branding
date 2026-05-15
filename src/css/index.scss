@@ -2,29 +2,362 @@
 @import "bootstrap-base";
 
 div#app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-header { border-bottom: $card-border-width solid $card-border-color; }
+header {
+  border-bottom: $card-border-width solid $card-border-color;
+}
 
-main { flex: 1; }
+// Décommenter la ligne ci-dessous pour passer le logo en vert (préprod)
+// header svg { filter: hue-rotate(120deg) saturate(1.5); }
 
-a:not(.btn):hover { text-decoration: none; opacity: 0.75; }
+main {
+  flex: 1;
+}
 
-.language-chooser, .language-chooser a { color: dimgrey; }
+main.home-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
 
-article p { text-align: justify; }
+a:not(.btn):hover {
+  text-decoration: none;
+  opacity: 0.75;
+}
 
-p:last-child { margin-bottom: 0; }
+.language-chooser, .language-chooser a {
+  color: white;
+}
 
-.img-muted { filter: grayscale(1); opacity: 0.75; }
+.grey-link, .grey-link a {
+  color: #696969;
+}
 
-.background-logo { 
+article p {
+  text-align: justify;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.img-muted {
+  filter: grayscale(1);
+  opacity: 0.75;
+}
+
+// ==============================
+// Hero section
+// ==============================
+.hero-section h1 {
+  letter-spacing: 0.02em;
+}
+
+.background-logo {
+  position: absolute;
+  height: 18em;
+  z-index: -1;
+  opacity: 0.07;
+  filter: grayscale(1);
+}
+
+@media (max-width: 575.98px) {
+  .background-logo {
+    height: 12em;
+  }
+}
+
+.svg-container {
+  max-width: 100%;
+  height: 8em;
+}
+
+.svg-container-sm {
+  max-width: 100%;
+  height: 7.5em;
+}
+
+// ==============================
+// Responsive grid (mobile-first)
+// ==============================
+.custom-col {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .custom-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1919.98px) {
+  .custom-col {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .custom-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+// ==============================
+// Collection cards (interactive blocks)
+// ==============================
+.collection-card {
+  border-radius: $border-radius;
+  padding: 1.5rem;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  height: 100%;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+}
+
+// ==============================
+// Emblem Sciences Po layout
+// ==============================
+.emblem-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.emblem-scpo {
+  width: 4.5em;
+  height: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+  .emblem-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .emblem-scpo {
+    width: 3.5em;
+  }
+}
+
+// ==============================
+// Video thumbnails + play overlay
+// ==============================
+.video-thumbnail {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 200px;
+
+  &::after {
+    content: "";
     position: absolute;
-    height: 18em;
-    z-index: -1;
-    opacity: 0.07;
-    filter: grayscale(1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 18px 0 18px 30px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.85);
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+// ==============================
+// Survey links (latest updates)
+// ==============================
+.survey-links {
+  display: block;
+  color: black;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: $border-radius;
+  transition: background-color 0.2s ease;
+
+  h5 {
+    color: $scpo;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    color: black;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.block {
+  min-height: 10em;
+}
+
+// ==============================
+// Red language box
+// ==============================
+.red-box {
+  display: inline-block;
+  background-color: $scpo;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.red-box:hover {
+  background-color: darkred;
+  color: white;
+}
+
+.grey-link:hover {
+  text-decoration: underline !important;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// ==============================
+// Back button (flow layout + animation)
+// ==============================
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .svg-arrow-container {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover .svg-arrow-container {
+    transform: translateX(-4px);
+  }
+}
+
+.svg-arrow-container {
+  max-width: 100%;
+  height: 2em;
+}
+
+.svg-container-cdsp {
+  max-width: 100%;
+  height: 10em;
+}
+
+.to-gap {
+  gap: 1em 0;
+}
+
+.title-video {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+// ==============================
+// Responsive button group
+// ==============================
+.btn-group-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) {
+  .btn-group-responsive {
+    flex-direction: row;
+
+    .btn {
+      width: auto;
+      flex: 1;
+    }
+  }
+}
+
+// ==============================
+// Fade transition (section changes)
+// ==============================
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// ==============================
+// Focus-visible for accessibility
+// ==============================
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid $scpo;
+  outline-offset: 2px;
+}
+
+// ==============================
+// Container override
+// ==============================
+@media (max-width: 1290px) {
+  .container {
+    max-width: 1030px;
+  }
+}
+
+// ==============================
+// Footer mobile
+// ==============================
+@media (max-width: 575.98px) {
+  footer .container {
+    text-align: center;
+
+    .d-inline-flex {
+      justify-content: center;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
 }

@@ -6,7 +6,8 @@ This could be used as a base for other installations branding
 - To watch all scss for development, run `npm run watch`
 - To watch only the dataverse scss for development, run `npm run watch:dv`
 - To serve the homepage for development, run `npm run dev`
-- To build the homepage + css for production, run `npm run build`
+- To build the homepage + css for pré-production, run `npm run build:pprd`
+- To build the homepage + css for production, run `npm run build:prod`
 
 ## Explanation of dist files:
 
