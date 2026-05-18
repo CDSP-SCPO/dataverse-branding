@@ -1,6 +1,8 @@
 <script setup>
 
 import {computed, ref} from 'vue'
+
+const loginUrl = import.meta.env.VITE_LOGIN_URL
 import '../dist/css/index.css';
 import Logo from './assets/logo.svg?component';
 import DVLogofull from './assets/dv-logo.svg?component';
@@ -187,7 +189,7 @@ const formatDate = (isoDate) => {
                     <Logo style="height:2.5em"/>
                 </a>
                 <div class="mt-4 mt-sm-0">
-                    <a href="https://data.sciencespo.fr/loginpage.xhtml" class="grey-link text-uppercase"
+                    <a :href="loginUrl" class="grey-link text-uppercase"
                        v-html="translation.login"></a>
                     <a href="#" @click.prevent="toggleLanguage"
                        class="text-uppercase language-chooser ml-3 ml-sm-5 red-box"
