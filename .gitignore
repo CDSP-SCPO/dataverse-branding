@@ -1,5 +1,6 @@
 node_modules/
 dist/assets/
+dist/index.html
 .idea/
 src/assets/logo.svg
 src/App.save
