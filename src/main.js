@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-if (process.env.NODE_ENV !== 'development') {
+if (!import.meta.env.DEV) {
   document.addEventListener("DOMContentLoaded", function() {
     const html = document.querySelector("html");
     const head = document.createElement("head");
