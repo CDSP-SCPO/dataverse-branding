@@ -16,10 +16,5 @@ export default defineConfig({
     cssCodeSplit: false,
     sourcemap: false,
     assetsInlineLimit: 100000000,
-		rollupOptions: {
-			output: {
-				manualChunks: () => "everything.js",
-			},
-		},
   }
 })

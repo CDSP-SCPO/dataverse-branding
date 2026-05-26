@@ -192,7 +192,7 @@ const formatDate = (isoDate) => {
                     <a :href="loginUrl" class="grey-link text-uppercase"
                        v-html="translation.login"></a>
                     <a href="#" @click.prevent="toggleLanguage"
-                       class="text-uppercase language-chooser ml-3 ml-sm-5 red-box"
+                       class="text-uppercase language-chooser ms-3 ms-sm-5 red-box"
                        :aria-label="translation.langSwitch">{{ otherLanguage }}</a>
                 </div>
             </div>
@@ -227,10 +227,10 @@ const formatDate = (isoDate) => {
                         <div class="custom-col px-3">
                             <div class="d-flex flex-column mb-3 mt-3 collection-card">
                                 <a href="#" @click.prevent="showSection('adsp')"
-                                   class="d-flex flex-column align-items-center text-center block">
+                                   class="d-flex flex-column align-items-center text-center block text-decoration-none">
                                     <div class="emblem-header w-100 mb-3">
                                         <EmblemScpo class="emblem-scpo" alt="Sciences Po"/>
-                                        <h4 class="text-primary font-weight-bold mt-2" v-html="translation.scpoCollTitle"
+                                        <h4 class="text-primary fw-bold mt-2" v-html="translation.scpoCollTitle"
                                             style="font-size: 2em;"></h4>
                                     </div>
                                 </a>
@@ -244,7 +244,7 @@ const formatDate = (isoDate) => {
             <main v-else-if="visibleSection === 'cdsp'" key="cdsp" class="pb-5">
                 <div class="container-md">
                     <a href="/" class="back-link mt-2 grey-link">
-                        <LeftArrow class="svg-arrow-container mr-2"/>
+                        <LeftArrow class="svg-arrow-container me-2"/>
                         {{ translation.home }}</a>
                     <div>
                         <!-- Section conditionnelle pour 'Collection CDSP' -->
@@ -267,14 +267,14 @@ const formatDate = (isoDate) => {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg mb-5 mb-lg-0 mr-lg-2 mr-0">
+                                <div class="col-lg mb-5 mb-lg-0 me-lg-2 me-0">
                                     <article class="p-4 card d-flex flex-column h-100">
-                                        <h4 class="text-primary font-weight-bold text-center mb-4"
+                                        <h4 class="text-primary fw-bold text-center mb-4"
                                             v-html="translation.tutoTitle"></h4>
 
                                         <div class="row to-gap justify-content-center">
                                             <div class="col-6 text-center">
-                                                <h5 class="text-center title-video font-weight-bold"
+                                                <h5 class="text-center title-video fw-bold"
                                                     v-html="translation.cdspCollCreateAccount"></h5>
                                                 <div class="video-thumbnail">
                                                     <a href="https://www.youtube.com/watch?v=GdLg2PFQgH4" target="_blank">
@@ -284,7 +284,7 @@ const formatDate = (isoDate) => {
                                                 </div>
                                             </div>
                                             <div class="col-6 text-center">
-                                                <h5 class="text-center title-video font-weight-bold"
+                                                <h5 class="text-center title-video fw-bold"
                                                     v-html="translation.cdspCollFindRessources"></h5>
                                                 <div class="video-thumbnail">
                                                     <a href="https://www.youtube.com/watch?v=1jEram-UFC4" target="_blank">
@@ -294,7 +294,7 @@ const formatDate = (isoDate) => {
                                                 </div>
                                             </div>
                                             <div class="col-6 text-center">
-                                                <h5 class="text-center title-video font-weight-bold"
+                                                <h5 class="text-center title-video fw-bold"
                                                     v-html="translation.cdspCollDownloadData"></h5>
                                                 <div class="video-thumbnail">
                                                     <a href="https://www.youtube.com/watch?v=qs6-IFfHmls" target="_blank">
@@ -310,7 +310,7 @@ const formatDate = (isoDate) => {
                                 </div>
                                 <div class="col-lg">
                                     <article class="p-4 card d-flex flex-column h-100">
-                                        <h4 class="text-primary font-weight-bold text-center mb-4"
+                                        <h4 class="text-primary fw-bold text-center mb-4"
                                             v-html="translation.cdspCollLatestUpdates">
                                         </h4>
                                         <p v-if="loadingResults" class="text-muted text-center">Chargement...</p>
@@ -336,7 +336,7 @@ const formatDate = (isoDate) => {
             <main v-else-if="visibleSection === 'adsp'" key="adsp" class="section-page">
                 <div class="container py-3">
                     <a href="/" class="back-link grey-link">
-                        <LeftArrow class="svg-arrow-container mr-2"/>
+                        <LeftArrow class="svg-arrow-container me-2"/>
                         {{ translation.home }}</a>
                     <article id="id_adsp">
                         <div class="row text-center mb-3">
