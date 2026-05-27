@@ -42,8 +42,9 @@ jobs:
         run: |
           file_name=$(ls prod/ | grep dataverse | sed 's/branding/branding-prod/g')
           mv prod/dataverse-branding*.tgz $file_name
-          file_name=$(ls pprd/ | grep dataverse | sed 's/branding/branding-prod/g')
+          file_name=$(ls pprd/ | grep dataverse | sed 's/branding/branding-pprd/g')
           mv pprd/dataverse-branding*.tgz $file_name
+          ls -la .
 
       - name: Release
         uses: softprops/action-gh-release@v3
