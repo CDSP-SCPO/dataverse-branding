@@ -8,12 +8,14 @@ This could be used as a base for other installations branding
 The builds rely on Vite environment files at the root of the repo. Create them before building:
 
 `.env.prod`:
-```
+
+```bash
 VITE_LOGIN_URL=https://data.sciencespo.fr/loginpage.xhtml
 ```
 
 `.env.pprd`:
-```
+
+```bash
 VITE_LOGIN_URL=https://datapprd.sciencespo.fr/loginpage.xhtml
 ```
 
@@ -23,7 +25,7 @@ These files are git-ignored and must be created manually on each machine.
 
 - To watch all scss for development, run `npm run watch`
 - To watch only the dataverse scss for development, run `npm run watch:dv`
-- To serve the homepage for development, run `npm run dev`
+- To serve the homepage for development, run `npm run dev:prod` or `npm run dev:pprd`
 - To build the homepage + css for pré-production, run `npm run build:pprd`
 - To build the homepage + css for production, run `npm run build:prod`
 
