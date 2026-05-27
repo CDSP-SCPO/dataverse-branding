@@ -6,15 +6,15 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), svgLoader(), viteSingleFile()],
+  server: {
+    proxy: {
+      '/api': 'https://datapprd.sciencespo.fr'
+    }
+  },
   build: {
     emptyOutDir: false,
     cssCodeSplit: false,
     sourcemap: false,
     assetsInlineLimit: 100000000,
-		rollupOptions: {
-			output: {
-				manualChunks: () => "everything.js",
-			},
-		},
   }
 })

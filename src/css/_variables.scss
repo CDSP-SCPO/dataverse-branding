@@ -14,8 +14,6 @@ $scpo: #e6142d;
   # BOOTSTRAP VARIABLES
 \*------------------------------------*/
 
-$enable-responsive-font-sizes: true;
-$displays: none, inline, inline-block, block, flex, inline-flex;
 $primary: $scpo;
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $h1-font-size: 3rem;
@@ -23,4 +21,6 @@ $border-radius: 5px;
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
