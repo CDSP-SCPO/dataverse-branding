@@ -2,14 +2,20 @@
   "name": "dataverse-branding",
   "version": "1.0.0",
   "private": true,
+  "files": [
+    "dist/logo.svg",
+    "dist/favicon-32x32.png",
+    "dist/index.html",
+    "dist/css/dv-custom.css",
+    "dist/css/index.css"
+  ],
   "scripts": {
     "watch": "sass src/css:dist/css --watch --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import",
     "watch:dv": "sass src/css/dv-custom.scss:dist/css/dv-custom.css --watch --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import",
-    "dev": "vite",
     "dev:pprd": "cp src/assets/logos/logo-pprd.svg src/assets/logo.svg && sass src/css:dist/css --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import && vite --mode pprd",
     "dev:prod": "cp src/assets/logos/logo-prod.svg src/assets/logo.svg && sass src/css:dist/css --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import && vite --mode prod",
-    "build:prod": "cp src/assets/logos/logo-prod.svg src/assets/logo.svg; rm -rf ./dist; sass src/css:dist/css --style=compressed --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import --no-source-map; vite build --mode prod",
-    "build:pprd": "cp src/assets/logos/logo-pprd.svg src/assets/logo.svg; rm -rf ./dist; sass src/css:dist/css --style=compressed --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import --no-source-map; vite build --mode pprd",
+    "build:prod": "cp src/assets/logos/logo-prod.svg src/assets/logo.svg; rm -rf ./dist; sass src/css:dist/css --style=compressed --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import --no-source-map; cp src/assets/logos/logo-prod.svg dist/logo.svg; vite build --mode prod",
+    "build:pprd": "cp src/assets/logos/logo-pprd.svg src/assets/logo.svg; rm -rf ./dist; sass src/css:dist/css --style=compressed --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import --no-source-map; cp src/assets/logos/logo-pprd.svg dist/logo.svg; vite build --mode pprd",
     "preview": "vite preview"
   },
   "dependencies": {

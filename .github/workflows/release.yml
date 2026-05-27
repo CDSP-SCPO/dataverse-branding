@@ -1,0 +1,52 @@
+name: Release to GH
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+" # Run workflow on version tags, e.g. 1.0.0.
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and pack prod library
+        run: |
+          mkdir -p prod
+          echo "VITE_LOGIN_URL=https://data.sciencespo.fr/loginpage.xhtml" > .env.prod
+          npm run build:prod
+          npm pack --pack-destination prod
+          
+      - name: Build and pack pprd library
+        run: |
+          mkdir -p pprd
+          echo "VITE_LOGIN_URL=https://datapprd.sciencespo.fr/loginpage.xhtml" > .env.pprd
+          npm run build:pprd
+          npm pack --pack-destination pprd
+
+      - name: Rename pack files
+        run: |
+          file_name=$(ls prod/ | grep dataverse | sed 's/branding/branding-prod/g')
+          mv prod/dataverse-branding*.tgz $file_name
+          file_name=$(ls pprd/ | grep dataverse | sed 's/branding/branding-prod/g')
+          mv pprd/dataverse-branding*.tgz $file_name
+
+      - name: Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            dataverse-branding*.tgz

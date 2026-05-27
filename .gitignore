@@ -1,6 +1,10 @@
 node_modules/
-dist/assets/
-dist/index.html
+dist/
 .idea/
 src/assets/logo.svg
 src/App.save
+*.tgz
+prod/
+pprd/
+.env.prod
+.env.pprd
