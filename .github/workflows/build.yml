@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and pack prod library
+        run: |
+          mkdir -p prod
+          echo "VITE_LOGIN_URL=https://data.sciencespo.fr/loginpage.xhtml" > .env.prod
+          npm run build:prod
+          
+      - name: Build and pack pprd library
+        run: |
+          mkdir -p pprd
+          echo "VITE_LOGIN_URL=https://datapprd.sciencespo.fr/loginpage.xhtml" > .env.pprd
+          npm run build:pprd
