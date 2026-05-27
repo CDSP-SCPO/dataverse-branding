@@ -2,6 +2,8 @@ name: Release to GH
 
 on:
   push:
+    branches:
+      - "*"
     tags:
       - "[0-9]+.[0-9]+.[0-9]+" # Run workflow on version tags, e.g. 1.0.0.
 
@@ -42,11 +44,13 @@ jobs:
         run: |
           file_name=$(ls prod/ | grep dataverse | sed 's/branding/branding-prod/g')
           mv prod/dataverse-branding*.tgz $file_name
-          file_name=$(ls pprd/ | grep dataverse | sed 's/branding/branding-prod/g')
+          file_name=$(ls pprd/ | grep dataverse | sed 's/branding/branding-pprd/g')
           mv pprd/dataverse-branding*.tgz $file_name
 
-      - name: Release
-        uses: softprops/action-gh-release@v3
-        with:
-          files: |
-            dataverse-branding*.tgz
+          ls -la .
+
+      # - name: Release
+      #   uses: softprops/action-gh-release@v3
+      #   with:
+      #     files: |
+      #       dataverse-branding*.tgz
