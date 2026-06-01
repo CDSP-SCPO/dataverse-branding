@@ -39,9 +39,9 @@ const translations = {
         'cdspCollFindRessources': "Finding data <br>",
         'cdspCollDownloadData': "Downloading data",
         'ExploreData': "Explore data",
-        'cdspCollDepositGuideLink': "https://cdsp.sciences-po.fr/en/deposer-des-donnees",
+        'cdspCollDepositGuideLink': "https://www.sciencespo.fr/cdsp/fr/donnees/deposer-des-donnees/",
         'cdspCollFindGuide': "data access",
-        'cdspCollFindGuideLink': "https://cdsp.sciences-po.fr/en/commander-des-donnees",
+        'cdspCollFindGuideLink': "https://www.sciencespo.fr/cdsp/fr/donnees/commander-des-donnees/",
         "cdspCollLatestUpdates": "Latest updates",
         'depositType': "<b>Type of deposit</b>:",
         'depositRequirements': "<b>Deposit requirements</b>:",
@@ -88,9 +88,9 @@ const translations = {
         'cdspCollFindRessources': "Trouver des données",
         'cdspCollDownloadData': "Télécharger des données",
         'ExploreData': "Explorer les données",
-        'cdspCollDepositGuideLink': "https://cdsp.sciences-po.fr/fr/deposer-des-donnees",
+        'cdspCollDepositGuideLink': "https://www.sciencespo.fr/cdsp/fr/donnees/deposer-des-donnees/",
         'cdspCollFindGuide': "Procédure de proposition de données au CDSP",
-        'cdspCollFindGuideLink': "https://cdsp.sciences-po.fr/fr/commander-des-donnees",
+        'cdspCollFindGuideLink': "https://www.sciencespo.fr/cdsp/fr/donnees/commander-des-donnees/",
         "cdspCollLatestUpdates": "Dernières mises à jour",
         'depositType': "<b>Type de dépôt</b> :",
         'depositRequirements': "<b>Conditions de dépôt</b> :",
@@ -260,7 +260,7 @@ const formatDate = (isoDate) => {
                                        class="btn btn-outline-primary btn-lg text-uppercase mx-2">{{
                                             translation.ExploreData
                                         }}</a>
-                                    <a href="https://cdsp.sciences-po.fr/fr/proposer-des-donnees/"
+                                    <a :href="translation.cdspCollDepositGuideLink"
                                        class="btn btn-outline-primary btn-lg text-uppercase mx-2">{{
                                             translation.deposit
                                         }}</a>
