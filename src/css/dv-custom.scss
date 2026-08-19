@@ -1,7 +1,25 @@
 @use 'sass:color';
 @import "variables";
 
-body { font-family: 'Open Sans', sans-serif !important; }
+// Sticky footer site-wide : sur une page dont le contenu est plus court que la
+// fenêtre (typiquement la homepage), sans ça la page s'arrête net sous le footer
+// et laisse un grand vide en dessous. En étirant #content (flex:1) pour occuper
+// tout l'espace restant entre le header et le footer, ce dernier reste collé en
+// bas de la fenêtre au lieu de flotter au milieu ou de laisser du vide dessous.
+body {
+	font-family: 'Open Sans', sans-serif !important;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	// Bug préexistant Dataverse (présent aussi sur l'ancien design, avant nos
+	// changements) : le CSS natif fixe "margin-bottom: 160px", un vestige d'un
+	// ancien footer positionné en absolute. Le footer étant en flux normal, ça
+	// ne fait que laisser un grand espace vide en bas de chaque page.
+	margin-bottom: 0 !important;
+}
+#content {
+	flex: 1;
+}
 
 // HEADER
 #dataverse-header-block { padding-top: 89px !important; }
@@ -114,9 +132,13 @@ span.glyphicon-question-sign.tooltip-icon.tooltip-icon { color: $secondary !impo
 
 .ui-button, th { background-image: none !important; }
 
+// !important nécessaire : sur la homepage, notre propre CSS (Bootstrap 5) définit
+// aussi .container avec ses propres breakpoints (jusqu'à 1320px), chargé après
+// ce fichier donc prioritaire par défaut — ce qui élargit le contenu au-delà de
+// la largeur voulue (1140px, cohérente avec le reste du site).
 @media (min-width: 1200px) {
 	.container {
-		width: 1140px;
+		width: 1140px !important;
 	}
 }
 
@@ -128,4 +150,60 @@ span.glyphicon-question-sign.tooltip-icon.tooltip-icon { color: $secondary !impo
 
 ul.navbar-right li:nth-child(1) {
   display: none;
+}
+
+// FOOTER
+// Le contenu de :FooterCustomizationFile (footer/custom-footer.html, bloc logo +
+// adresse) s'insère par Dataverse APRÈS #dvfooter (copyright/ToU + powered-by).
+// On garde cet ordre dans le DOM mais on l'affiche visuellement en premier avec
+// flex + order, pour reproduire l'agencement de l'ancien footer custom.
+footer {
+	display: flex;
+	flex-direction: column;
+	// Dataverse fixe une hauteur pensée pour son footer natif d'une ligne ;
+	// notre contenu (logo/adresse + copyright, sur 2 lignes) déborderait de
+	// cette hauteur fixe sinon, laissant apparaître le fond blanc en dessous.
+	height: auto !important;
+	background: #f8f9fa;
+	padding: 24px 0;
+	color: #6c757d;
+
+	// Neutralise le Bootstrap 3 ".small" du footer natif Dataverse (85% de la
+	// taille) pour retrouver le texte en taille normale (16px) de l'ancien design.
+	.small, small {
+		font-size: 16px !important;
+	}
+
+	a:not(.btn) {
+		color: #6c757d !important;
+	}
+	a:not(.btn):hover {
+		text-decoration: none;
+		opacity: 0.75;
+	}
+}
+
+#dvfooter {
+	order: 2;
+	color: #6c757d;
+}
+
+.footer-scpo-block {
+	order: 1;
+	color: #6c757d;
+
+	.footer-logo {
+		height: 16px;
+		filter: grayscale(1);
+		opacity: 0.75;
+	}
+}
+
+@media (max-width: 575.98px) {
+	footer .container {
+		text-align: center;
+	}
+	#dvfooter .text-right {
+		text-align: center !important;
+	}
 }

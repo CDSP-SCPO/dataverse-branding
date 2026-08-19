@@ -2,10 +2,7 @@
 
 import {computed, ref} from 'vue'
 
-const loginUrl = import.meta.env.VITE_LOGIN_URL
 import '../dist/css/index.css';
-import Logo from './assets/logo.svg?component';
-import DVLogofull from './assets/dv-logo.svg?component';
 import LogoFULL from './assets/logo-full-FR.svg?component';
 import LogoFULLEN from './assets/logo-full-EN.svg?component';
 import LeftArrow from './assets/left-arrow.svg?component';
@@ -15,7 +12,6 @@ import DVLogo from './assets/dv-logo-red.svg?component';
 const translations = {
     'en': {
         'title': "data.sciencespo",
-        'login': 'Login',
         'home': "Home",
         'researchDataRepo': "Research data repository of Sciences Po",
         'exploreBtn': "Find and explore data",
@@ -57,14 +53,10 @@ const translations = {
         'guidesFind': "find data",
         'guidesFindLink': "https://sciencespo.libguides.com/ld.php?content_id=34525575",
         'learnMore': "To find out more:",
-        'scpoLink': "https://www.sciencespo.fr/en",
-        'tou': "General terms of use",
         'drisAdministration': "Collection mangaed by DRIS",
-        'langSwitch': "Switch to French",
     },
     'fr': {
         'title': "data.sciencespo",
-        'login': "Se connecter",
         'home': "Accueil",
         'researchDataRepo': "L'entrepôt de données de la recherche de Sciences Po",
         'exploreBtn': "Explorer l'entrepôt",
@@ -106,36 +98,28 @@ const translations = {
         'guidesFind': "trouver des données",
         'guidesFindLink': "http://sciencespo.libguides.com/ld.php?content_id=34525448",
         'learnMore': "Pour en savoir plus :",
-        'scpoLink': "https://www.sciencespo.fr/fr",
-        'tou': "Conditions générales d'utilisation",
         'drisAdministration': "Collection administrée par la DRIS",
-        'langSwitch': "Passer en anglais",
     },
 }
 
+// La langue de la homepage suit celle de la navbar native de Dataverse : on lit
+// l'attribut lang du <html>, déjà positionné par le serveur (JSF) selon la locale
+// choisie, avant de faire quoi que ce soit d'autre. Le sélecteur de langue natif
+// fait un vrai rechargement de page (pas de l'Ajax partiel), donc l'app se
+// remonte entièrement à chaque changement et relit cette valeur à jour.
+const serverLang = document.documentElement.lang;
 const browserLanguage = window.navigator.language || window.navigator.language;
-const language = ref(browserLanguage.includes('fr') ? 'fr' : 'en');
+const language = ref(
+    serverLang === 'fr' || serverLang === 'en'
+        ? serverLang
+        : (browserLanguage.includes('fr') ? 'fr' : 'en')
+);
 
 const translation = computed(() => {
     return translations[language.value];
 });
-const otherLanguage = computed(() => {
-    return language.value === 'en' ? 'fr' : 'en';
-});
 
-function changeLanguage(newLang) {
-    language.value = newLang;
-    document.documentElement.setAttribute('lang', language.value);
-    document.title = translation.value.title;
-}
-
-function toggleLanguage() {
-    changeLanguage(otherLanguage.value);
-}
-
-
-// set start dom state
-changeLanguage(language.value);
+document.title = translation.value.title;
 
 // Gestion du call api pour récupérer les dernières mises en ligne
 const firstPageResults = ref([]);
@@ -183,21 +167,6 @@ const formatDate = (isoDate) => {
 
 <template>
     <div class="page-container">
-        <header>
-            <div id="id_accueil" class="container d-sm-flex justify-content-between align-items-center py-4 flex-wrap">
-                <a href="/">
-                    <Logo style="height:2.5em"/>
-                </a>
-                <div class="mt-4 mt-sm-0">
-                    <a :href="loginUrl" class="grey-link text-uppercase"
-                       v-html="translation.login"></a>
-                    <a href="#" @click.prevent="toggleLanguage"
-                       class="text-uppercase language-chooser ms-3 ms-sm-5 red-box"
-                       :aria-label="translation.langSwitch">{{ otherLanguage }}</a>
-                </div>
-            </div>
-        </header>
-
         <transition name="fade" mode="out-in">
             <main v-if="visibleSection !== 'cdsp' && visibleSection !== 'adsp'"
                   key="home"
@@ -384,24 +353,6 @@ const formatDate = (isoDate) => {
                 </div>
             </main>
         </transition>
-
-        <footer class="bg-light mt-auto py-4 text-muted">
-            <div class="container d-sm-flex justify-content-between">
-                <div>
-                    <p class="mb-2"><a :href="translation.scpoLink" class="d-inline-flex align-items-center"
-                                       style="height:1.5em;">
-                        <Logo style="height:1em" class="img-muted"/>
-                    </a></p>
-                    <p class="mb-2">27, rue Saint-Guillaume<br/>75337 Paris Cedex 07</p>
-                    <p class="mb-0"><small>© {{ new Date().getFullYear() }} Sciences Po<br/><a
-                        href="/misc/cond_jur/ToU.pdf" class="text-muted">{{ translation.tou }}</a></small></p>
-                </div>
-                <p class="mb-0 mt-4 mt-sm-auto"><a href="https://dataverse.org" target="_blank" rel="noopener"
-                                                   class="text-muted">Powered by
-                    <DVLogofull style="height:2.5em" class="img-muted"/>
-                </a></p>
-            </div>
-        </footer>
     </div>
 </template>
 
