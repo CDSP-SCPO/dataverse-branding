@@ -16,6 +16,7 @@ const translations = {
     'en': {
         'title': "data.sciencespo",
         'login': 'Login',
+        'myAccount': 'My Account',
         'home': "Home",
         'researchDataRepo': "Research data repository of Sciences Po",
         'exploreBtn': "Find and explore data",
@@ -65,6 +66,7 @@ const translations = {
     'fr': {
         'title': "data.sciencespo",
         'login': "Se connecter",
+        'myAccount': "Mon compte",
         'home': "Accueil",
         'researchDataRepo': "L'entrepôt de données de la recherche de Sciences Po",
         'exploreBtn': "Explorer l'entrepôt",
@@ -137,6 +139,40 @@ function toggleLanguage() {
 // set start dom state
 changeLanguage(language.value);
 
+// Vérifie si l'utilisateur a déjà une session Dataverse active, et récupère son nom.
+// /api/users/:me ne fonctionne pas ici (nécessite la feature flag "api-session-auth",
+// non activée sur cette instance) : on interroge donc une page JSF qui exige une connexion
+// (/dataverseuser.xhtml, redirige vers loginpage.xhtml sinon) et on extrait le nom affiché
+// par la navbar native de Dataverse (élément #userDisplayInfoTitle, vérifié sur l'instance).
+const isLoggedIn = ref(false);
+const userDisplayName = ref('');
+const accountUrl = '/dataverseuser.xhtml';
+
+fetch(accountUrl, {
+    method: 'GET',
+    credentials: 'same-origin',
+    cache: 'no-store',
+})
+    .then(response => {
+        if (response.url.includes('loginpage.xhtml')) {
+            isLoggedIn.value = false;
+            return null;
+        }
+        isLoggedIn.value = true;
+        return response.text();
+    })
+    .then(html => {
+        if (!html) return;
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const nameEl = doc.querySelector('[id$="userDisplayInfoTitle"]');
+        userDisplayName.value = nameEl ? nameEl.textContent.trim() : '';
+    })
+    .catch(error => {
+        console.error('Erreur lors de la vérification de la session:', error);
+        isLoggedIn.value = false;
+    });
+
+
 // Gestion du call api pour récupérer les dernières mises en ligne
 const firstPageResults = ref([]);
 const loadingResults = ref(true);
@@ -189,8 +225,10 @@ const formatDate = (isoDate) => {
                     <Logo style="height:2.5em"/>
                 </a>
                 <div class="mt-4 mt-sm-0">
-                    <a :href="loginUrl" class="grey-link text-uppercase"
+                    <a v-if="!isLoggedIn" :href="loginUrl" class="grey-link text-uppercase"
                        v-html="translation.login"></a>
+                    <a v-else :href="accountUrl" class="grey-link text-uppercase"
+                       >{{ userDisplayName || translation.myAccount }}</a>
                     <a href="#" @click.prevent="toggleLanguage"
                        class="text-uppercase language-chooser ms-3 ms-sm-5 red-box"
                        :aria-label="translation.langSwitch">{{ otherLanguage }}</a>
