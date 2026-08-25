@@ -19,13 +19,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.40"
+    "vue": "^3.5.41"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",
     "bootstrap": "^5.3.8",
-    "sass": "^1.101.3",
-    "vite": "^8.1.5",
+    "sass": "^1.103.1",
+    "vite": "^8.2.2",
     "vite-plugin-singlefile": "^2.3.3",
     "vite-svg-loader": "^5.1.1"
   }
