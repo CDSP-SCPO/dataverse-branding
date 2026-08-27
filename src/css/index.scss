@@ -1,29 +1,33 @@
 @import "variables";
 @import "bootstrap-base";
 
+// Le CSS natif de Dataverse impose un html { font-size: 62.5% } (base 10px) sur
+// TOUTE la page, y compris la homepage depuis qu'on garde la navbar native. Notre
+// propre CSS (Bootstrap 5) suppose 1rem = 16px, donc sans ça tout notre contenu
+// custom (tailles, marges en rem) apparaît rétréci à 62,5% de sa taille prévue.
+// La navbar native n'est pas affectée par ce correctif : elle est stylée en
+// px/em (Bootstrap 3), pas en rem.
+html {
+  font-size: 16px !important;
+}
+
 div#app {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-header {
-  border-bottom: $card-border-width solid $card-border-color;
-}
-
-// Décommenter la ligne ci-dessous pour passer le logo en vert (préprod)
-// header svg { filter: hue-rotate(120deg) saturate(1.5); }
-
-main {
-  flex: 1;
+// Le bandeau natif Dataverse affiche déjà "data.sciencespo" (nom de la collection
+// racine, via :LogoCustomizationFile pour le logo). On le masque uniquement ici
+// (homepage) car le hero ci-dessous a son propre titre, pour éviter le doublon.
+#dataverseHeader {
+  display: none;
 }
 
 main.home-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 0;
+  justify-content: flex-start;
 }
 
 a:not(.btn) {
@@ -33,10 +37,6 @@ a:not(.btn) {
 a:not(.btn):hover {
   text-decoration: none;
   opacity: 0.75;
-}
-
-.language-chooser, .language-chooser a {
-  color: white;
 }
 
 .grey-link, .grey-link a {
@@ -51,14 +51,20 @@ p:last-child {
   margin-bottom: 0;
 }
 
-.img-muted {
-  filter: grayscale(1);
-  opacity: 0.75;
-}
-
 // ==============================
 // Hero section
 // ==============================
+// Le contenu s'ancre désormais en haut de la page (sous la navbar native) au
+// lieu d'être centré verticalement dans tout l'écran. Sans cette marge, le
+// cercle décoratif en fond (18em, centré sur le hero) se retrouve coupé en
+// haut par la navbar. Cette marge lui laisse la place d'être visible en entier.
+// !important nécessaire : l'élément porte aussi la classe utilitaire Bootstrap
+// "mt-3" dans le template, or les utilitaires Bootstrap 5 sont eux-mêmes
+// compilés avec !important (margin-top:1rem!important) et l'emportaient sinon.
+.hero-section {
+  margin-top: 6rem !important;
+}
+
 .hero-section h1 {
   letter-spacing: 0.02em;
 }
@@ -227,22 +233,6 @@ p:last-child {
   min-height: 10em;
 }
 
-// ==============================
-// Red language box
-// ==============================
-.red-box {
-  display: inline-block;
-  background-color: $scpo;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.red-box:hover {
-  background-color: darkred;
-  color: white;
-}
-
 .grey-link:hover {
   text-decoration: underline !important;
 }
@@ -250,7 +240,6 @@ p:last-child {
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 // ==============================
@@ -340,28 +329,4 @@ button:focus-visible,
   outline-offset: 2px;
 }
 
-// ==============================
-// Container override
-// ==============================
-@media (max-width: 1290px) {
-  .container {
-    max-width: 1030px;
-  }
-}
 
-// ==============================
-// Footer mobile
-// ==============================
-@media (max-width: 575.98px) {
-  footer .container {
-    text-align: center;
-
-    .d-inline-flex {
-      justify-content: center;
-    }
-
-    p {
-      text-align: center;
-    }
-  }
-}
