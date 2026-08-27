@@ -27,14 +27,12 @@ jobs:
       - name: Build and pack prod library
         run: |
           mkdir -p prod
-          echo "VITE_LOGIN_URL=https://data.sciencespo.fr/loginpage.xhtml" > .env.prod
           npm run build:prod
           npm pack --pack-destination prod
           
       - name: Build and pack pprd library
         run: |
           mkdir -p pprd
-          echo "VITE_LOGIN_URL=https://datapprd.sciencespo.fr/loginpage.xhtml" > .env.pprd
           npm run build:pprd
           npm pack --pack-destination pprd
 
