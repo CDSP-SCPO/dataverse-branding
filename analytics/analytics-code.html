@@ -1,0 +1,105 @@
+<!-- Injecté dans le <head> de toutes les pages Dataverse via :WebAnalyticsCode -->
+<!-- Réf : https://guides.dataverse.org/en/latest/installation/config.html#web-analytics-code -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css" />
+
+<!-- Matomo (chargé seulement si la catégorie "analytics" est acceptée, et uniquement en prod) -->
+<script type="text/plain" data-category="analytics">
+  //<![CDATA[
+  if (window.location.hostname === 'data.sciencespo.fr') {
+    var _paq = window._paq = window._paq || [];
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//ws.sciences-po.fr/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '11']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  }
+  //]]>
+</script>
+<!-- End Matomo Code -->
+
+<!-- Cookie Consent (type="module" => exécuté après le parsing du DOM, nécessaire car ce fichier est dans le <head>) -->
+<script type="module">
+  //<![CDATA[
+  import 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js';
+
+  CookieConsent.run({
+    categories: {
+      necessary: {
+        readOnly: true,
+        enabled: true,
+      },
+      analytics: {
+        autoClear: {
+          cookies: [{ name: /^_pk_/ }],
+        },
+      },
+    },
+    language: {
+      default: 'fr',
+      autoDetect: 'document',
+      translations: {
+        fr: {
+          consentModal: {
+            title: 'Gestion des cookies',
+            description: "Ce site utilise un outil de mesure d'audience (Matomo) pour comprendre l'utilisation du site. Aucune donnée n'est revendue à des tiers.",
+            acceptAllBtn: 'Tout accepter',
+            acceptNecessaryBtn: 'Tout refuser',
+            showPreferencesBtn: 'Personnaliser',
+          },
+          preferencesModal: {
+            title: 'Préférences relatives aux cookies',
+            acceptAllBtn: 'Tout accepter',
+            acceptNecessaryBtn: 'Tout refuser',
+            savePreferencesBtn: 'Enregistrer',
+            sections: [
+              {
+                title: 'Cookies strictement nécessaires',
+                description: "Indispensables au fonctionnement du site (session, connexion), ils ne peuvent pas être désactivés.",
+                linkedCategory: 'necessary',
+              },
+              {
+                title: "Mesure d'audience",
+                description: "Permettent de mesurer la fréquentation du site (Matomo) afin de l'améliorer.",
+                linkedCategory: 'analytics',
+              },
+            ],
+          },
+        },
+        en: {
+          consentModal: {
+            title: 'Cookie settings',
+            description: 'This site uses an audience measurement tool (Matomo) to understand how the site is used. No data is sold to third parties.',
+            acceptAllBtn: 'Accept all',
+            acceptNecessaryBtn: 'Reject all',
+            showPreferencesBtn: 'Customize',
+          },
+          preferencesModal: {
+            title: 'Cookie preferences',
+            acceptAllBtn: 'Accept all',
+            acceptNecessaryBtn: 'Reject all',
+            savePreferencesBtn: 'Save',
+            sections: [
+              {
+                title: 'Strictly necessary cookies',
+                description: 'Required for the site to work (session, login); they cannot be disabled.',
+                linkedCategory: 'necessary',
+              },
+              {
+                title: 'Audience measurement',
+                description: 'Used to measure site traffic (Matomo) in order to improve it.',
+                linkedCategory: 'analytics',
+              },
+            ],
+          },
+        },
+      },
+    },
+  });
+  //]]>
+</script>
