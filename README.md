@@ -16,3 +16,4 @@ This could be used as a base for other installations branding
 - `dist/css/dv-custom.css`: the custom stylesheet (see http://guides.dataverse.org/en/latest/installation/config.html#custom-stylesheet)
 - `dist/index.html`: the homepage (see http://guides.dataverse.org/en/latest/installation/config.html#custom-homepage)
 - `dist/footer.html`: the homepage (see http://guides.dataverse.org/en/latest/installation/config.html#custom-footer)
+- `dist/matomo.html`: analytics code (see https://guides.dataverse.org/en/6.10.1/installation/config.html#webanalyticscode)
