@@ -1,6 +1,6 @@
 {
   "name": "dataverse-branding",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "private": true,
   "files": [
     "dist/logo.svg",
@@ -8,7 +8,8 @@
     "dist/index.html",
     "dist/css/dv-custom.css",
     "dist/css/index.css",
-    "dist/footer.html"
+    "dist/footer.html",
+    "dist/matomo.html"
   ],
   "scripts": {
     "watch": "sass src/css:dist/css --watch --load-path=src/css --load-path=node_modules --quiet-deps --silence-deprecation=import",
